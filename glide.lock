@@ -1,0 +1,140 @@
+hash: c6f8fd77751c5fce0e671b38f325bc0e812200c5817b87b7dfc4d897862de4d7
+updated: 2017-07-23T04:21:27.526910364+09:00
+imports:
+- name: cloud.google.com/go
+  version: 7050ae8919c454e5119ddeb65c678014a52e5d57
+  subpackages:
+  - compute/metadata
+- name: github.com/astaxie/beedb
+  version: 1732292dfde40fab7b4ad38ba413492ec5633ad3
+- name: github.com/astaxie/beego
+  version: cab8458c1c4a5a3b4bf5192922be620e6dede15b
+  subpackages:
+  - config
+  - context
+  - context/param
+  - grace
+  - logs
+  - session
+  - session/redis
+  - toolbox
+  - utils
+- name: github.com/beevik/etree
+  version: 09746331a38f3da8c023a85a65c8c152070de725
+- name: github.com/fatih/structs
+  version: 7e5a8eef611ee84dd359503f3969f80df4c50723
+- name: github.com/garyburd/go-oauth
+  version: 4f191fd0442e75c0c73bd00e4f5f27d4c08312ee
+  subpackages:
+  - oauth
+- name: github.com/garyburd/redigo
+  version: 433969511232c397de61b1442f9fd49ec06ae9ba
+  subpackages:
+  - internal
+  - redis
+- name: github.com/go-playground/locales
+  version: 273913d3b2ff7127452603d55dd3f6f888e4f268
+  subpackages:
+  - currency
+- name: github.com/go-playground/universal-translator
+  version: 8bf00f2bdf7faea5c3583d41f57bf1eb15b743d7
+- name: github.com/go-sql-driver/mysql
+  version: a0583e0143b1624142adab07e0e97fe106d99561
+- name: github.com/golang/protobuf
+  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
+  subpackages:
+  - proto
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
+- name: github.com/huandu/facebook
+  version: efe962f32209aa6e7430fb779bdf29bbcdb716e1
+- name: github.com/ikeikeikeike/go-sitemap-generator
+  version: e3c3d374db77838e92e5981ba81f26d1ecea4aa8
+  subpackages:
+  - stm
+- name: github.com/imdario/mergo
+  version: e3000cb3d28c72b837601cac94debd91032d19fe
+- name: github.com/jinzhu/gorm
+  version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
+  subpackages:
+  - dialects/mysql
+- name: github.com/jinzhu/inflection
+  version: 1c35d901db3da928c72a72d8458480cc9ade058f
+- name: github.com/kardianos/osext
+  version: ae77be60afb1dcacde03767a8c37337fad28ac14
+- name: github.com/mitchellh/mapstructure
+  version: db1efb556f84b25a0a13a04aad883943538ad2e0
+- name: github.com/nfnt/resize
+  version: 891127d8d1b52734debe1b3c3d7e747502b6c366
+- name: github.com/Sirupsen/logrus
+  version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
+- name: github.com/snabb/sitemap
+  version: 036d02a8f10827316f0f031c0e4bde15024ae8f0
+- name: github.com/snikch/goodman
+  version: 3b65f3e04f92d05e0bdf805fbf137f82f01a1730
+  subpackages:
+  - cmd/goodman
+  - hooks
+  - transaction
+- name: github.com/ziutek/mymysql
+  version: e08c2f35356576b3c3690c252fe5dca728ae9292
+  subpackages:
+  - godrv
+  - mysql
+  - native
+- name: golang.org/x/net
+  version: 41bba8d80bbfab43231ffdf4c210037baae5f6a3
+  subpackages:
+  - context
+  - context/ctxhttp
+- name: golang.org/x/oauth2
+  version: 314dd2c0bf3ebd592ec0d20847d27e79d0dbe8dd
+  subpackages:
+  - google
+  - internal
+  - jws
+  - jwt
+- name: google.golang.org/api
+  version: c55f685368bb1cdfed2c20283e2878a83b929730
+  subpackages:
+  - gensupport
+  - googleapi
+  - googleapi/internal/uritemplates
+  - oauth2/v2
+  - youtube/v3
+- name: google.golang.org/appengine
+  version: 150dc57a1b433e64154302bdc40b6bb8aefa313a
+  subpackages:
+  - internal
+  - internal/app_identity
+  - internal/base
+  - internal/datastore
+  - internal/log
+  - internal/modules
+  - internal/remote_api
+  - internal/urlfetch
+  - urlfetch
+- name: gopkg.in/check.v1
+  version: 20d25e2804050c1cd24a7eea1e7a6447dd0e74ec
+- name: gopkg.in/go-playground/validator.v9
+  version: fb68f39656d7ebf8aa339ad4917aa0c260ecc237
+- name: gopkg.in/yaml.v2
+  version: 4c78c975fe7c825c6d1466c42be594d1d6f3aba6
+testImports:
+- name: github.com/gopherjs/gopherjs
+  version: 5c8f21741620ef6a52e185bbc920499581901c9e
+  subpackages:
+  - js
+- name: github.com/jtolds/gls
+  version: bb0351aa7eb6f322f32667d51375f26a2bca6628
+- name: github.com/smartystreets/assertions
+  version: 26acb9229f421449ac63d014995b282d59261a8b
+  subpackages:
+  - internal/go-render/render
+  - internal/oglematchers
+- name: github.com/smartystreets/goconvey
+  version: d4c757aa9afd1e2fc1832aaab209b5794eb336e1
+  subpackages:
+  - convey
+  - convey/gotest
+  - convey/reporting

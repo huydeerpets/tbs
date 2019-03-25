@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `user_contribution_searches` (
     `created_at` DATETIME NULL COMMENT 'Created At',
     `updated_at` DATETIME NULL COMMENT 'Updated At',
     PRIMARY KEY (`id`)
-) ENGINE = mroonga;
+) ENGINE = InnoDB;
 
 -- +goose Down
 -- SQL section 'Down' is executed when this migration is rolled back

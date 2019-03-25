@@ -14,7 +14,7 @@ func (u *UserContributionFollow) Add() error {
 	return Create(u)
 }
 
-// Delete Deleteする
+// Delete Delete
 func (u *UserContributionFollow) Delete() error {
 	return Delete(u)
 }

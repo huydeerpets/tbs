@@ -25,7 +25,7 @@ type Response struct {
 	Email string `json:"email"`
 }
 
-// Get Callbackする
+// Get Callback
 func (c *CallbackController) Get() {
 	request := CallbackRequest{}
 	if err := c.ParseForm(&request); err != nil {

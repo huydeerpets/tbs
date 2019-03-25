@@ -34,7 +34,7 @@ const (
 	StatusMade = 7
 )
 
-// BaseModel ベースモデル
+// BaseModel 
 type BaseModel struct {
 	ID        uint       `gorm:"primary_key" json:"id"`
 	CreatedAt time.Time  `json:"createdAt"`
@@ -42,7 +42,7 @@ type BaseModel struct {
 	DeletedAt *time.Time `json:"deletedAt"`
 }
 
-// getBindAndPlaceHolder バインドとプレースホルダの結果を取得する
+// getBindAndPlaceHolder 
 func getBindAndPlaceHolder(where string, bindList []map[string]interface{}) (string, []interface{}) {
 	bind := []interface{}{}
 	var holder string
@@ -51,7 +51,7 @@ func getBindAndPlaceHolder(where string, bindList []map[string]interface{}) (str
 		for key, value := range list {
 
 			switch value := value.(type) {
-			// 配列対応
+			// Array correspondence
 			case []int:
 				holder = " ("
 
@@ -78,7 +78,7 @@ func getBindAndPlaceHolder(where string, bindList []map[string]interface{}) (str
 	return where, bind
 }
 
-// getDbOption DBオプションを取得する
+// getDbOption 
 func getDbOption(where string, bindList []map[string]interface{}, option map[string]interface{}) (*gorm.DB, error) {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -125,7 +125,7 @@ func checkError(err error) error {
 	return err
 }
 
-// GetWhere 条件から取得する
+// GetWhere 
 func GetWhere(dbModel interface{}, where string, bindList []map[string]interface{}, option map[string]interface{}) (*gorm.DB, error) {
 	db, err := getDbOption(where, bindList, option)
 	if err != nil {
@@ -140,7 +140,7 @@ func GetWhere(dbModel interface{}, where string, bindList []map[string]interface
 	return db, err
 }
 
-// GeScanWhere 条件から置き換えListを取得する
+// GeScanWhere 
 func GeScanWhere(dest interface{}, name string, where string, bindList []map[string]interface{}, option map[string]interface{}) error {
 	where += " AND Deleted_at IS NULL"
 
@@ -157,7 +157,7 @@ func GeScanWhere(dest interface{}, name string, where string, bindList []map[str
 	return err
 }
 
-// GetCount 条件から数を取得する
+// GetCount 
 func GetCount(dbModel interface{}, name string, where string, bindList []map[string]interface{}, option map[string]interface{}) (int, error) {
 	db, err := getDbOption(where, bindList, option)
 	if err != nil {
@@ -173,7 +173,7 @@ func GetCount(dbModel interface{}, name string, where string, bindList []map[str
 	return count, err
 }
 
-// GetListWhere 条件からListを取得する
+// GetListWhere 
 func GetListWhere(dbModel interface{}, where string, bindList []map[string]interface{}, option map[string]interface{}) (*gorm.DB, error) {
 	db, err := getDbOption(where, bindList, option)
 	if err != nil {
@@ -188,7 +188,7 @@ func GetListWhere(dbModel interface{}, where string, bindList []map[string]inter
 	return db, err
 }
 
-// Update 条件から更新する
+// Update 
 func Update(dbModel interface{}, s []interface{}, where string, bindList []map[string]interface{}, option map[string]interface{}) (*gorm.DB, error) {
 	db, err := getDbOption(where, bindList, option)
 	if err != nil {
@@ -203,7 +203,7 @@ func Update(dbModel interface{}, s []interface{}, where string, bindList []map[s
 	return db, err
 }
 
-// Updates 条件から複数更新する
+// Updates 
 func Updates(dbModel interface{}, s interface{}, where string, bindList []map[string]interface{}, option map[string]interface{}) (*gorm.DB, error) {
 	db, err := getDbOption(where, bindList, option)
 	if err != nil {
@@ -218,7 +218,7 @@ func Updates(dbModel interface{}, s interface{}, where string, bindList []map[st
 	return db, err
 }
 
-// Create 作成する
+// Create 
 func Create(dbModel interface{}) error {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -228,7 +228,7 @@ func Create(dbModel interface{}) error {
 	return db.Create(dbModel).Error
 }
 
-// Save 更新する
+// Save 
 func Save(dbModel interface{}) error {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -238,7 +238,7 @@ func Save(dbModel interface{}) error {
 	return db.Save(dbModel).Error
 }
 
-// Delete Deleteする
+// Delete 
 func Delete(dbModel interface{}) error {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -248,7 +248,7 @@ func Delete(dbModel interface{}) error {
 	return db.Delete(dbModel).Error
 }
 
-// Truncate 空にする
+// Truncate 
 func Truncate(tableName string) error {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -260,7 +260,7 @@ func Truncate(tableName string) error {
 	return checkError(err)
 }
 
-// InsertBatch 複数挿入する
+// InsertBatch 
 func InsertBatch(tableName string, add []map[string]interface{}) error {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -303,7 +303,7 @@ func InsertBatch(tableName string, add []map[string]interface{}) error {
 	return db.Exec(sql).Error
 }
 
-// Begin トランザクションを貼る
+// Begin 
 func Begin() *gorm.DB {
 	db, err := database.GormConnect()
 	if err != nil {
@@ -316,19 +316,19 @@ func Begin() *gorm.DB {
 	return tx
 }
 
-// Rollback ロールバックする
+// Rollback 
 func Rollback(db *gorm.DB) {
 	db.Rollback()
 	database.Transaction(nil)
 }
 
-// Commit コミットする
+// Commit 
 func Commit(db *gorm.DB) {
 	db.Commit()
 	database.Transaction(nil)
 }
 
-// Lock ロックする
+// Lock 
 func Lock(tableName string, id int) error {
 	db, err := database.GormConnect()
 	if err != nil {

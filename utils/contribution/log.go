@@ -4,7 +4,7 @@ import (
 	"github.com/huydeerpets/tbs/models"
 )
 
-// AddLog ログを追加する
+// AddLog 
 func AddLog(userID int, uID int) error {
 	u := models.LogUserContribution{
 		UserID:             userID,

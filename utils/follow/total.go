@@ -2,14 +2,14 @@ package follows
 
 import "github.com/huydeerpets/tbs/models"
 
-// TruncateTotal 統計を空にする
+// TruncateTotal 
 func TruncateTotal() error {
 	u := models.ContributionTotalFollows{}
 
 	return u.Truncate()
 }
 
-// AddTotal 統計を追加する
+// AddTotal 
 func AddTotal(uID int, count int) error {
 	u := models.ContributionTotalFollows{
 		UserContributionID: uID,
@@ -19,7 +19,7 @@ func AddTotal(uID int, count int) error {
 	return u.Add()
 }
 
-// AddTotalMap 統計マップを追加する
+// AddTotalMap
 func AddTotalMap(m map[int]int) error {
 	for id, count := range m {
 		if err := AddTotal(id, count); err != nil {
@@ -30,7 +30,7 @@ func AddTotalMap(m map[int]int) error {
 	return nil
 }
 
-// GetTotalListByUserContributionIDListPostIDListから統計を取得する
+// GetTotalListByUserContributionIDList
 func GetTotalListByUserContributionIDList(idList []int) ([]models.ContributionTotalFollows, error) {
 	u := models.ContributionTotalFollows{}
 
@@ -38,7 +38,7 @@ func GetTotalListByUserContributionIDList(idList []int) ([]models.ContributionTo
 	return r, err
 }
 
-// getToatlMap 統計マップを取得する
+// getToatlMap 
 func getToatlMap(u []models.ContributionTotalFollows) map[int]int {
 	r := map[int]int{}
 
@@ -49,7 +49,7 @@ func getToatlMap(u []models.ContributionTotalFollows) map[int]int {
 	return r
 }
 
-// GetTotalMapByUserContributionIDListPostIDListから統計を取得する
+// GetTotalMapByUserContributionIDList
 func GetTotalMapByUserContributionIDList(idList []int) (map[int]int, error) {
 	u, err := GetTotalListByUserContributionIDList(idList)
 	if err != nil {

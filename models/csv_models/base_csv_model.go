@@ -10,7 +10,7 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-// GetAll 全てを取得する
+// GetAll Get everything
 func GetAll(csvName string, base interface{}) error {
 	m, err := GetMampAll(csvName)
 	if err != nil {
@@ -20,7 +20,7 @@ func GetAll(csvName string, base interface{}) error {
 	return mapstructure.Decode(m, base)
 }
 
-// GetMampAll 全てのマップ取得する
+// GetMampAll Get all maps
 func GetMampAll(f string) (r []map[string]string, err error) {
 	root, err := utils.GetAppPath()
 	if err != nil {

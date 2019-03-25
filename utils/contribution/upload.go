@@ -4,7 +4,7 @@ import (
 	"github.com/huydeerpets/tbs/models"
 )
 
-// AddUpload uploadを追加する
+// AddUpload 
 func AddUpload(uID int, t string) error {
 	u := models.UserContributionUpload{
 		UserContributionID: uID,
@@ -14,7 +14,7 @@ func AddUpload(uID int, t string) error {
 	return u.Add()
 }
 
-// GetUploadByUserContributionIDPostIDからuploadを情報を取得する
+// GetUploadByUserContributionID
 func GetUploadByUserContributionID(uID int) (models.UserContributionUpload, error) {
 	u := models.UserContributionUpload{}
 

@@ -2,13 +2,13 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserProfileImage ユーザープロフィール画像
+// UserProfileImage 
 type UserProfileImage struct {
 	BaseModel
 	UserID int `json:"user_id"`
 }
 
-// GetIDAndAdd 追加してIDを取得する
+// GetIDAndAdd 
 func (u *UserProfileImage) GetIDAndAdd() (uint, error) {
 	if err := Create(u); err != nil {
 		return 0, err
@@ -17,7 +17,7 @@ func (u *UserProfileImage) GetIDAndAdd() (uint, error) {
 	return u.ID, nil
 }
 
-// GetListByUserID ユーザーIDからListを取得する
+// GetListByUserID 
 func (u *UserProfileImage) GetListByUserID(uID int) (userProfileImage []UserProfileImage, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserID": uID},
@@ -29,7 +29,7 @@ func (u *UserProfileImage) GetListByUserID(uID int) (userProfileImage []UserProf
 	return
 }
 
-// GetScanByUserID ユーザーIDからスキャン取得する
+// GetScanByUserID 
 func (u *UserProfileImage) GetScanByUserID(uID int, dest interface{}) error {
 	whereList := []map[string]interface{}{
 		{"UserID": uID},

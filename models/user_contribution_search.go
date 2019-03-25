@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// UserContributionSearch ユーザー投稿検索
+// UserContributionSearch 
 type UserContributionSearch struct {
 	ID                 uint      `gorm:"primary_key"`
 	UserContributionID int       `json:"user_contribution_id"`
@@ -16,7 +16,7 @@ type UserContributionSearch struct {
 	UpdatedAt          time.Time `json:"updatedAt"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserContributionSearch) Add() error {
 	return Create(u)
 }
@@ -26,17 +26,17 @@ func (u *UserContributionSearch) Save() error {
 	return Save(u)
 }
 
-// Delete Deleteする
+// Delete Delete
 func (u *UserContributionSearch) Delete() error {
 	return Delete(u)
 }
 
-// Truncate 空にする
+// Truncate 
 func (u *UserContributionSearch) Truncate() error {
 	return Truncate("user_contribution_searches")
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID
 func (u *UserContributionSearch) GetByUserContributionID(id int) (userContributionSearch UserContributionSearch, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": id},
@@ -48,7 +48,7 @@ func (u *UserContributionSearch) GetByUserContributionID(id int) (userContributi
 	return
 }
 
-// GetListByUserContributionIDListPostIDListから取得する
+// GetListByUserContributionIDList
 func (u *UserContributionSearch) GetListByUserContributionIDList(id []int) (userContributionSearch []UserContributionSearch, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": id},
@@ -60,7 +60,7 @@ func (u *UserContributionSearch) GetListByUserContributionIDList(id []int) (user
 	return
 }
 
-// GetListBySearch 検索からListを取得する
+// GetListBySearch 
 func (u *UserContributionSearch) GetListBySearch(search string, order string, limit int, offset int) (userContributionSearch []UserContributionSearch, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"Search": "+" + search},
@@ -77,7 +77,7 @@ func (u *UserContributionSearch) GetListBySearch(search string, order string, li
 	return
 }
 
-// GetCountBySearch 検索から数を取得する
+// GetCountBySearch 
 func (u *UserContributionSearch) GetCountBySearch(search string, order string) (int, error) {
 	userContributionSearch := UserContributionSearch{}
 

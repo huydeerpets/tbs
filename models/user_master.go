@@ -2,7 +2,7 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserMaster ユーザー情報
+// UserMaster User information
 type UserMaster struct {
 	BaseModel      `model:"true"`
 	Name           string `json:"name"`
@@ -11,7 +11,7 @@ type UserMaster struct {
 	ProfileImageID int    `json:"profile_image_id"`
 }
 
-// GetIDAndAddPostしてIDを取得する
+// GetIDAndAddPost to get the ID
 func (u *UserMaster) GetIDAndAdd() (uint, error) {
 	if err := Create(u); err != nil {
 		return 0, err
@@ -25,7 +25,7 @@ func (u *UserMaster) Save() error {
 	return Save(u)
 }
 
-// GetByEmail メールアドレスから取得する
+// GetByEmail 
 func (u *UserMaster) GetByEmail(email string) (userMaster UserMaster, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"Email": email},
@@ -37,7 +37,7 @@ func (u *UserMaster) GetByEmail(email string) (userMaster UserMaster, db *gorm.D
 	return
 }
 
-// GetByID ユーザ IDから取得する
+// GetByID Get from user ID
 func (u *UserMaster) GetByID(id int) (userMaster UserMaster, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -49,7 +49,7 @@ func (u *UserMaster) GetByID(id int) (userMaster UserMaster, db *gorm.DB, err er
 	return
 }
 
-// GetScanByID ユーザIDからスキャン取得する
+// GetScanByID Get scan from user ID
 func (u *UserMaster) GetScanByID(id int, dest interface{}) error {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -59,7 +59,7 @@ func (u *UserMaster) GetScanByID(id int, dest interface{}) error {
 	return GeScanWhere(dest, "user_masters", "ID = :ID", whereList, option)
 }
 
-// GetListByIDList ユーザ IDListからListを取得する
+// GetListByIDList Get List from User ID List
 func (u *UserMaster) GetListByIDList(idList []int) (userMaster []UserMaster, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": idList},
@@ -71,7 +71,7 @@ func (u *UserMaster) GetListByIDList(idList []int) (userMaster []UserMaster, db 
 	return
 }
 
-// GetScanByIDList ユーザIDListからスキャン取得する
+// GetScanByIDList Get scan from user ID List
 func (u *UserMaster) GetScanByIDList(idList []int, dest interface{}) error {
 	whereList := []map[string]interface{}{
 		{"ID": idList},

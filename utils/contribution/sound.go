@@ -15,7 +15,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// GetSoundByUserContributionIDPostIDから音声を取得する
+// GetSoundByUserContributionID
 func GetSoundByUserContributionID(uID int) (models.UserContributionSound, error) {
 	u := models.UserContributionSound{}
 
@@ -24,7 +24,7 @@ func GetSoundByUserContributionID(uID int) (models.UserContributionSound, error)
 	return r, err
 }
 
-// GetSoundListByUserContributionIDListPostIDListから音声Listを取得する
+// GetSoundListByUserContributionIDList
 func GetSoundListByUserContributionIDList(uID []int) ([]models.UserContributionSound, error) {
 	u := models.UserContributionSound{}
 
@@ -33,7 +33,7 @@ func GetSoundListByUserContributionIDList(uID []int) ([]models.UserContributionS
 	return r, err
 }
 
-// GetSoundMapByUserContributionIDListPostIDListから音声マップを取得する
+// GetSoundMapByUserContributionIDList
 func GetSoundMapByUserContributionIDList(uID []int) (map[int]models.UserContributionSound, error) {
 	m := map[int]models.UserContributionSound{}
 
@@ -49,7 +49,7 @@ func GetSoundMapByUserContributionIDList(uID []int) (map[int]models.UserContribu
 	return m, nil
 }
 
-// AddSound 音声を追加する
+// AddSound 
 func AddSound(uID int, s int) error {
 	u := models.UserContributionSound{
 		UserContributionID: uID,
@@ -59,7 +59,7 @@ func AddSound(uID int, s int) error {
 	return u.Add()
 }
 
-// GetSoundDetailListByUserContributionIDPostIDから音声Listを取得する
+// GetSoundDetailListByUserContributionID
 func GetSoundDetailListByUserContributionID(uID int) ([]models.UserContributionSoundDetail, error) {
 	u := models.UserContributionSoundDetail{}
 
@@ -75,7 +75,7 @@ func getBodySoundFormat(str string) string {
 	return str
 }
 
-// AddSoundDetail 音声詳細を追加する
+// AddSoundDetail 
 func AddSoundDetail(uID int, b GetBody) error {
 	s := ""
 	var err error
@@ -110,7 +110,7 @@ func getByID(id uint) (models.UserContributionSoundDetail, error) {
 	return r, err
 }
 
-// SaveSoundDetailToBodySound 音声本文をSave
+// SaveSoundDetailToBodySound 
 func SaveSoundDetailToBodySound(id uint, body string, userID int) error {
 	u, err := getByID(id)
 	if err != nil {
@@ -132,7 +132,7 @@ func SaveSoundDetailToBodySound(id uint, body string, userID int) error {
 	return u.Save()
 }
 
-// SaveSoundDetailTVoiceType ボイスタイプをSave
+// SaveSoundDetailTVoiceType 
 func SaveSoundDetailTVoiceType(id uint, v int, userID int) error {
 	u, err := getByID(id)
 	if err != nil {
@@ -154,7 +154,7 @@ func SaveSoundDetailTVoiceType(id uint, v int, userID int) error {
 	return u.Save()
 }
 
-// AddSoundDetailList 音声詳細Listを追加する
+// AddSoundDetailList 
 func AddSoundDetailList(uID int, list []GetBody) error {
 	for _, b := range list {
 		if err := AddSoundDetail(uID, b); err != nil {
@@ -169,14 +169,14 @@ func getFileName(u models.UserContributionSoundDetail) string {
 	return strconv.Itoa(u.UserContributionID) + "_" + strconv.Itoa(u.Priority)
 }
 
-// AddTmpSound 一時音声ファイルを追加する
+// AddTmpSound 
 func AddTmpSound(u models.UserContributionSoundDetail) error {
 	file := getFileName(u)
 
 	return sound.AddTmpSound(u.BodySound, file, u.VoiceType)
 }
 
-// MakeSoundFile 音声ファイルを作成する
+// MakeSoundFile 
 func MakeSoundFile(uID int, list []models.UserContributionSoundDetail) error {
 	fileList := []string{}
 
@@ -197,7 +197,7 @@ func MakeSoundFile(uID int, list []models.UserContributionSoundDetail) error {
 	return sound.Join(fileList, strconv.Itoa(uID))
 }
 
-// ExistsSound 音声ファイルの存在判定する
+// ExistsSound 
 func ExistsSound(uID int) bool {
 	dir := beego.AppConfig.String("soundDir")
 	root, _ := utils.GetAppPath()
@@ -205,21 +205,21 @@ func ExistsSound(uID int) bool {
 	return utils.ExistsFile(root + "/" + dir + strconv.Itoa(uID) + ".mp3")
 }
 
-// UpdateSoundToMakeStatusPostIDから作成状態を更新する
+// UpdateSoundToMakeStatus
 func UpdateSoundToMakeStatus(uID int, makeStatus int) error {
 	u := models.UserContributionSoundDetail{}
 
 	return u.UpdateToMakeStatusByUserContributionID(uID, makeStatus)
 }
 
-// UpdatesSoundToMakeStatusAndVoiceTypeByUserContributionIDPostIDから作成状態をとボイスタイプを更新する
+// UpdatesSoundToMakeStatusAndVoiceTypeByUserContributionID
 func UpdatesSoundToMakeStatusAndVoiceTypeByUserContributionID(uID int, makeStatus int, voiceType int) error {
 	u := models.UserContributionSoundDetail{}
 
 	return u.UpdatesToMakeStatusAndVoiceTypeByUserContributionID(uID, makeStatus, voiceType)
 }
 
-// ReplaceBodeySound 音声本文を置き換える
+// ReplaceBodeySound 
 func ReplaceBodeySound(s string) (string, error) {
 	s = getBodySoundFormat(s)
 
@@ -236,7 +236,7 @@ func ReplaceBodeySound(s string) (string, error) {
 	return s, nil
 }
 
-// GetSoundDetailListByMakeStatusMade 作成済みの音声詳細を取得する
+// GetSoundDetailListByMakeStatusMade 
 func GetSoundDetailListByMakeStatusMade() ([]models.UserContributionSoundDetail, error) {
 	u := models.UserContributionSoundDetail{}
 	r, _, err := u.GetListByMakeStatusMade()
@@ -244,7 +244,7 @@ func GetSoundDetailListByMakeStatusMade() ([]models.UserContributionSoundDetail,
 	return r, err
 }
 
-// GetSoudDetailListBySpecifiedDays 指定に日数内の音声詳細を取得する
+// GetSoudDetailListBySpecifiedDays 
 func GetSoudDetailListBySpecifiedDays(list []models.UserContributionSoundDetail, day int) []models.UserContributionSoundDetail {
 	limit := utils.Now().Add(-1 * time.Duration(day) * 24 * time.Hour).Unix()
 	r := []models.UserContributionSoundDetail{}
@@ -261,7 +261,7 @@ func GetSoudDetailListBySpecifiedDays(list []models.UserContributionSoundDetail,
 	return r
 }
 
-// AddOrSaveSoundLength 長さを追加 or Save
+// AddOrSaveSoundLength 
 func AddOrSaveSoundLength(uID int, second int, length int) error {
 	u := models.UserContributionSoundLength{}
 	u, _, err := u.GetByUserContributionID(uID)

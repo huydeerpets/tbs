@@ -6,10 +6,10 @@ import (
 	"time"
 )
 
-// PasswordMinLength パスワードの最低文字数
+// PasswordMinLength 
 const PasswordMinLength = 8
 
-// AddForgetPassword 忘れたパスワードを追加する
+// AddForgetPassword 
 func AddForgetPassword(email string, keyword string) error {
 	u := models.UserForgetPassword{
 		Email:   email,
@@ -19,7 +19,7 @@ func AddForgetPassword(email string, keyword string) error {
 	return u.Add()
 }
 
-// GetForgetPasswordByEmail メールアドレスから忘れたパスワードを取得する
+// GetForgetPasswordByEmail 
 func GetForgetPasswordByEmail(email string) (models.UserForgetPassword, error) {
 	u := models.UserForgetPassword{}
 	r, _, err := u.GetByEmail(email)
@@ -27,7 +27,7 @@ func GetForgetPasswordByEmail(email string) (models.UserForgetPassword, error) {
 	return r, err
 }
 
-// IsUpdatePassword パスワードが更新可能か判定する
+// IsUpdatePassword 
 func IsUpdatePassword(email string, keyword string) (bool, error) {
 	up, err := GetForgetPasswordByEmail(email)
 	if err != nil {
@@ -45,7 +45,7 @@ func IsUpdatePassword(email string, keyword string) (bool, error) {
 	return true, nil
 }
 
-// DeleteByEmail メールアドレスからDeleteする
+// DeleteByEmail 
 func DeleteByEmail(email string) error {
 	u := models.UserForgetPassword{}
 	r, _, err := u.GetListByEmail(email)

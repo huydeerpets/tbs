@@ -10,25 +10,25 @@ import (
 	validator "gopkg.in/go-playground/validator.v9"
 )
 
-// SaveBodyController 本文保存Controler
+// SaveBodyController Save textControler
 type SaveBodyController struct {
 	controllers.BaseController
 }
 
-// SaveBodydRequest 本文保存request
+// SaveBodydRequest Save textrequest
 type SaveBodydRequest struct {
 	ID   uint   `form:"id" validate:"min=1"`
 	Body string `form:"body" validate:"max=256"`
 }
 
-// SaveBodyResponse 本文保存response
+// SaveBodyResponse Save textresponse
 type SaveBodyResponse struct {
 	Warning bool   `json:"warning"`
 	Message string `json:"message"`
 	ID      uint   `json:"id"`
 }
 
-// Put 本文Save
+// Put Save text
 func (c *SaveBodyController) Put() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

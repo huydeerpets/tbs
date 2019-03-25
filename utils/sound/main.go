@@ -11,7 +11,7 @@ import (
 	"github.com/huydeerpets/tbs/utils"
 )
 
-// getRootPath パスを取得する
+// getRootPath 
 func getRootPath() (string, error) {
 	p, err := utils.GetAppPath()
 	if err != nil {
@@ -21,7 +21,7 @@ func getRootPath() (string, error) {
 	return p + "/", nil
 }
 
-// static 静的パスを取得する
+// static 
 func static() (string, error) {
 	p, err := getRootPath()
 	if err != nil {
@@ -36,7 +36,7 @@ func static() (string, error) {
 	return p + files + "/files/", nil
 }
 
-// AddTmpSound 一時音声を追加する
+// AddTmpSound 
 func AddTmpSound(text string, file string, voiceType int) error {
 	v := csvModels.VoiceType{}
 	voice, err := v.GetStruct(voiceType)
@@ -63,7 +63,7 @@ func AddTmpSound(text string, file string, voiceType int) error {
 	}
 }
 
-// addOpenJtalk OpenJtalkを追加する
+// addOpenJtalk
 func addOpenJtalk(text string, file string, v string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -103,7 +103,7 @@ func toAqk2k(text string) (string, error) {
 	return string(r), err
 }
 
-// addSoundless 無音を追加する
+// addSoundless 
 func addSoundless(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -120,7 +120,7 @@ func addSoundless(file string) error {
 	return err
 }
 
-// addAquesTalk AquesTalkを追加する
+// addAquesTalk 
 func addAquesTalk(text string, file string) error {
 	text, err := toAqk2k(text)
 	if err != nil {
@@ -148,7 +148,7 @@ func addAquesTalk(text string, file string) error {
 	return addSoundless(file)
 }
 
-// Join 結合する
+// Join 
 func Join(list []string, file string) error {
 	cmd := "sox"
 	path, err := getRootPath()
@@ -168,7 +168,7 @@ func Join(list []string, file string) error {
 	return toMp3(file)
 }
 
-// toMp3 mp3に変換する
+// toMp3 
 func toMp3(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -184,7 +184,7 @@ func toMp3(file string) error {
 	return err
 }
 
-// ToM4a m4aに変換する
+// ToM4a 
 func ToM4a(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -200,7 +200,7 @@ func ToM4a(file string) error {
 	return err
 }
 
-// RemoveDetailFile 詳細ファイルをDeleteする
+// RemoveDetailFile 
 func RemoveDetailFile(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -214,7 +214,7 @@ func RemoveDetailFile(file string) error {
 	return nil
 }
 
-// RemoveJoinFile 連結ファイルをDeleteする
+// RemoveJoinFile 
 func RemoveJoinFile(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -239,14 +239,14 @@ func RemoveJoinFile(file string) error {
 	return nil
 }
 
-// Info 情報
+// Info
 type Info struct {
 	Streams []struct {
 		Duration float64 `json:"duration,string"`
 	} `json:"streams"`
 }
 
-// GetLength 再生時間を取得する
+// GetLength 
 func GetLength(file string) (len float64, err error) {
 	path, err := static()
 	if err != nil {

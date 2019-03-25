@@ -9,7 +9,7 @@ import (
 var db *gorm.DB
 var transactionDB *gorm.DB
 
-// GormConnect gorm接続を取得する
+// GormConnect get gorm connection
 func GormConnect() (*gorm.DB, error) {
 	if transactionDB != nil {
 		return transactionDB, nil
@@ -26,7 +26,7 @@ func GormConnect() (*gorm.DB, error) {
 	protocol := beego.AppConfig.String("mysqlhost")
 	database := beego.AppConfig.String("mysqldb")
 
-	connect := user + ":" + pass + "@" + protocol + "/" + database + "?parseTime=true&loc=Asia%2FTokyo"
+	connect := user + ":" + pass + "@" + protocol + "/" + database + "?parseTime=true&loc=Australia%2FSydney"
 	db, err = gorm.Open(dbms, connect)
 
 	if err != nil {
@@ -40,7 +40,7 @@ func GormConnect() (*gorm.DB, error) {
 	return db, nil
 }
 
-// Transaction トランザクション
+// Transaction transaction
 func Transaction(db *gorm.DB) {
 	transactionDB = db
 }

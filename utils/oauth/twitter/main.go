@@ -18,7 +18,7 @@ type Account struct {
 	Email           string `json:"email"`
 }
 
-// GetConnect 接続を取得する
+// GetConnect
 func GetConnect() *oauth.Client {
 	return &oauth.Client{
 		TemporaryCredentialRequestURI: "https://api.twitter.com/oauth/request_token",
@@ -31,7 +31,7 @@ func GetConnect() *oauth.Client {
 	}
 }
 
-// GetAccessToken アクセストークンを取得する
+// GetAccessToken 
 func GetAccessToken(rt *oauth.Credentials, oauthVerifier string) (*oauth.Credentials, error) {
 	oc := GetConnect()
 	at, _, err := oc.RequestToken(nil, rt, oauthVerifier)
@@ -39,7 +39,7 @@ func GetAccessToken(rt *oauth.Credentials, oauthVerifier string) (*oauth.Credent
 	return at, err
 }
 
-// GetMe 自身を取得する
+// GetMe 
 func GetMe(at *oauth.Credentials, user *Account) error {
 	oc := GetConnect()
 
@@ -69,12 +69,12 @@ func GetMe(at *oauth.Credentials, user *Account) error {
 
 }
 
-// PostTweet Tweetを投稿する
+// PostTweet 
 func PostTweet(at *oauth.Credentials) error {
 	oc := GetConnect()
 
 	v := url.Values{}
-	v.Set("status", "テスト投稿。APIから投稿しました。\n投稿元：https://github.com/wheatandcat/example-golang-oauth2")
+	v.Set("status", "Test post. Posted from API. \n Post source：https://github.com/wheatandcat/example-golang-oauth2")
 
 	resp, err := oc.Post(nil, at, "https://api.twitter.com/1.1/statuses/update.json", v)
 	if err != nil {

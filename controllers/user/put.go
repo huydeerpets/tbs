@@ -10,17 +10,17 @@ import (
 	validator "gopkg.in/go-playground/validator.v9"
 )
 
-// PutRequest 保存request
+// PutRequest Putrequest
 type PutRequest struct {
 	Name string `form:"name" validate:"min=1,max=100"`
 }
 
-// PutResponse 保存response
+// PutResponse Putresponse
 type PutResponse struct {
 	Success bool `json:"success"`
 }
 
-// Put ユーザー情報
+// Put User information
 func (c *MainController) Put() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

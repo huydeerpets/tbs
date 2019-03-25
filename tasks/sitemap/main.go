@@ -26,7 +26,7 @@ func main() {
 	sm.Finalize().PingSearchEngines()
 }
 
-// create 作成する
+// create 
 func create() *stm.Sitemap {
 	sm := stm.NewSitemap()
 	sm.SetDefaultHost(beego.AppConfig.String("topurl"))
@@ -40,7 +40,7 @@ func create() *stm.Sitemap {
 	return sm
 }
 
-// contributionPostを確認する
+// contributionPost
 func contribution(sm *stm.Sitemap) {
 	contributionIDList, err := contributions.GetViewStatusPublicIDList()
 	if err != nil {

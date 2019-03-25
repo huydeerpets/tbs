@@ -7,7 +7,7 @@ import (
 	"github.com/huydeerpets/tbs/utils/character"
 )
 
-// SaveBody 本本
+// SaveBody 
 type SaveBody struct {
 	Priority      int           `json:"priority"`
 	Body          string        `json:"body"`
@@ -16,14 +16,14 @@ type SaveBody struct {
 	Character     SaveCharacter `json:"character"`
 }
 
-// SaveCharacter 保存キャラクター
+// SaveCharacter 
 type SaveCharacter struct {
 	ID        int    `json:"id"`
 	FileName  string `json:"fileName"`
 	VoiceType int    `json:"voiceType"`
 }
 
-// GetBody 取得本文
+// GetBody 
 type GetBody struct {
 	Priority      int          `json:"priority"`
 	Body          string       `json:"body"`
@@ -32,14 +32,14 @@ type GetBody struct {
 	Character     GetCharacter `json:"character"`
 }
 
-// GetCharacter 取得キャラクター
+// GetCharacter 
 type GetCharacter struct {
 	ID        int    `json:"id"`
 	FileName  string `json:"fileName"`
 	VoiceType int    `json:"voiceType"`
 }
 
-// SaveDetail 詳細をSave
+// SaveDetail 
 func SaveDetail(userContributionID int, body string) error {
 	ucd, err := GetDetailByUserContributionID(userContributionID)
 	if err != nil {
@@ -63,7 +63,7 @@ func SaveDetail(userContributionID int, body string) error {
 	return nil
 }
 
-// StirngToSaveBody 保存本文に変換する
+// StirngToSaveBody 
 func StirngToSaveBody(body string) (b []SaveBody, err error) {
 	bytes := []byte(body)
 	err = json.Unmarshal(bytes, &b)
@@ -78,7 +78,7 @@ func StirngToSaveBody(body string) (b []SaveBody, err error) {
 	return b, err
 }
 
-// StirngToGetBody 取得本文に変換する
+// StirngToGetBody 
 func StirngToGetBody(body string) (b []GetBody, err error) {
 	bytes := []byte(body)
 	err = json.Unmarshal(bytes, &b)
@@ -97,7 +97,7 @@ func StirngToGetBody(body string) (b []GetBody, err error) {
 	return b, err
 }
 
-// GetDetailByUserContributionIDPostIDから投稿詳細を取得する
+// GetDetailByUserContributionID
 func GetDetailByUserContributionID(uID int) (models.UserContributionDetail, error) {
 	u := &models.UserContributionDetail{}
 

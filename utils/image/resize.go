@@ -8,7 +8,7 @@ import (
 	"github.com/nfnt/resize"
 )
 
-// ResizeImageリサイズ
+// ResizeImage
 func Resize(src string, dest string, width uint, height uint) error {
 	file, err := os.Open(src)
 	if err != nil {
@@ -40,7 +40,7 @@ func Resize(src string, dest string, width uint, height uint) error {
 	return nil
 }
 
-// getWidthAndHeight 幅と高さを取得する
+// getWidthAndHeight 
 func getWidthAndHeight(src string, width uint, height uint) (uint, uint, error) {
 	file, err := os.Open(src)
 	if err != nil {

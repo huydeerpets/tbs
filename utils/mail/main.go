@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// Body 本文
+// Body 
 type Body struct {
 	From    string
 	To      string
@@ -17,7 +17,7 @@ type Body struct {
 	Message string
 }
 
-// Send メールを送信する
+// Send 
 func Send(email string, body []byte) error {
 	if utils.IsTest() {
 		return nil
@@ -41,7 +41,7 @@ func Send(email string, body []byte) error {
 	return err
 }
 
-// GetBody 本文を取得する
+// GetBody 
 func GetBody(b Body) []byte {
 	buffer := new(bytes.Buffer)
 	template := template.Must(template.New("emailTemplate").Parse(getBodyTemplate()))
@@ -50,7 +50,7 @@ func GetBody(b Body) []byte {
 	return buffer.Bytes()
 }
 
-// getBodyTemplate 本文テンプレートを使用する
+// getBodyTemplate 
 func getBodyTemplate() string {
 	return "To: {{.To}}\r\n" +
 		"Subject: {{.Subject}}\r\n" +
@@ -58,26 +58,26 @@ func getBodyTemplate() string {
 		"{{.Message}}"
 }
 
-// ForgetpasswordTemplate パスワード忘れた本文
+// ForgetpasswordTemplate
 type ForgetpasswordTemplate struct {
 	URL   string
 	Host  string
 	Email string
 }
 
-// GetForgetpasswordBody パスワード忘れた本文を取得する
+// GetForgetpasswordBody 
 func GetForgetpasswordBody(f ForgetpasswordTemplate) []byte {
-	t := "パスワードの変更申請を受け付けました。\r\n" +
-		"\r\n" +
-		"下記のURLから、、パスワード変更手続きをしてください\r\n" +
-		"{{.URL}}\r\n" +
-		"\r\n" +
-		"※このURLは発行から1時間有効です。\r\n" +
-		"※1時間以内に複数回パスワードの変更申請を行った場合は、直近で発行されたURLのみ有効になるのでご注意ください。\r\n" +
-		"\r\n" +
-		"--------------------------------\r\n" +
-		"dotstamp :{{.Host}}\r\n" +
-		"お問い合わせ：{{.Email}}"
+	t: = "Request for password change accepted. \r\n" +
+"\r\n" +
+"Please change your password from the following URL \r\n" +
+"{{.URL}} \r\n" +
+"\r\n" +
+"※ This URL is valid for 1 hour from issuance. \r\n" +
+"* If you have applied for password change multiple times within 1 hour, please note that only the most recently issued URL is valid. \r\n" +
+"\r\n" +
+"-------------------------------------------- \r\n" +
+"dotstamp: {{.Host}} \r\n" +
+"Contact Us: {{.Email}}"
 
 	buffer := new(bytes.Buffer)
 	template := template.Must(template.New("forgetPassword").Parse(t))
@@ -86,7 +86,7 @@ func GetForgetpasswordBody(f ForgetpasswordTemplate) []byte {
 	return buffer.Bytes()
 }
 
-// GetForgetpasswordURL パスワード忘れたURLを取得する
+// GetForgetpasswordURL 
 func GetForgetpasswordURL(email string, keyword string) (string, error) {
 	e, err := utils.Encrypter([]byte(email))
 	if err != nil {

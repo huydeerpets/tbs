@@ -22,7 +22,7 @@ type DeleteResponse struct {
 	Tag     []tags.Tag `json:"tags"`
 }
 
-// Delete Deleteする
+// Delete Delete
 func (c *MainController) Delete() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

@@ -2,13 +2,13 @@ package follows
 
 import "github.com/huydeerpets/tbs/models"
 
-// OrderValue 順番値
+// OrderValue 
 type OrderValue struct {
 	UserContributionID int
 	Order              int
 }
 
-// Add 詳細をSave
+// Add 
 func Add(uID int, cID int) error {
 	u := models.UserContributionFollow{
 		UserID:             uID,
@@ -18,7 +18,7 @@ func Add(uID int, cID int) error {
 	return u.Add()
 }
 
-// DeleteFollowをDeleteする
+// DeleteFollow
 func Delete(id uint) error {
 	u := models.UserContributionFollow{}
 	user, _, err := u.GetByID(id)
@@ -29,7 +29,7 @@ func Delete(id uint) error {
 	return user.Delete()
 }
 
-// GetListByUserContributionIDPostIDからフォローListを取得する
+// GetListByUserContributionID
 func GetListByUserContributionID(cID int) ([]models.UserContributionFollow, error) {
 	u := models.UserContributionFollow{}
 	r, _, err := u.GetListByUserContributionID(cID)
@@ -37,14 +37,14 @@ func GetListByUserContributionID(cID int) ([]models.UserContributionFollow, erro
 	return r, err
 }
 
-// GetCountByUserContributionIDPostIDからフォロー数を取得する
+// GetCountByUserContributionID
 func GetCountByUserContributionID(cID int) (int, error) {
 	u := models.UserContributionFollow{}
 
 	return u.GetCountByUserContributionID(cID)
 }
 
-// GetByUserIDAndUserContributionID ユーザIDと投稿IDから取得する
+// GetByUserIDAndUserContributionID 
 func GetByUserIDAndUserContributionID(uID int, ucID int) (models.UserContributionFollow, error) {
 	u := models.UserContributionFollow{}
 	r, _, err := u.GetByUserIDAndUserContributionID(uID, ucID)
@@ -52,14 +52,14 @@ func GetByUserIDAndUserContributionID(uID int, ucID int) (models.UserContributio
 	return r, err
 }
 
-// GetCountByUserIDAndUserContributionID ユーザIDと投稿IDから件数を取得する
+// GetCountByUserIDAndUserContributionID 
 func GetCountByUserIDAndUserContributionID(uID int, ucID int) (int, error) {
 	u := models.UserContributionFollow{}
 
 	return u.GetCountByUserIDAndUserContributionID(uID, ucID)
 }
 
-// GetListByUserID ユーザIDからListを取得する
+// GetListByUserID 
 func GetListByUserID(uID int, order string, limit int, offset int) ([]models.UserContributionFollow, error) {
 	u := models.UserContributionFollow{}
 	r, _, err := u.GetListByUserID(uID, order, limit, offset)
@@ -67,7 +67,7 @@ func GetListByUserID(uID int, order string, limit int, offset int) ([]models.Use
 	return r, err
 }
 
-// GetOrderValueListByUserID ユーザIDから順番値Listを取得する
+// GetOrderValueListByUserID 
 func GetOrderValueListByUserID(uID int, order string, limit int, offset int) (o []OrderValue, err error) {
 	u, err := GetListByUserID(uID, order, limit, offset)
 	if err != nil {
@@ -90,7 +90,7 @@ func GetOrderValueListByUserID(uID int, order string, limit int, offset int) (o 
 	return o, nil
 }
 
-// GetListByUserContributionIDListPostIDListからフォローListを取得する
+// GetListByUserContributionIDList
 func GetListByUserContributionIDList(cID []int) ([]models.UserContributionFollow, error) {
 	u := models.UserContributionFollow{}
 	r, _, err := u.GetListByUserContributionIDList(cID)
@@ -98,7 +98,7 @@ func GetListByUserContributionIDList(cID []int) ([]models.UserContributionFollow
 	return r, err
 }
 
-// GetFollowCountMapFollow数マップを取得する
+// GetFollowCountMapFollow
 func GetFollowCountMap(u []models.UserContributionFollow) map[int]int {
 	m := map[int]int{}
 
@@ -114,7 +114,7 @@ func GetFollowCountMap(u []models.UserContributionFollow) map[int]int {
 	return m
 }
 
-// GetCountByUserID ユーザIDから数を取得する
+// GetCountByUserID 
 func GetCountByUserID(uID int, order string) (int, error) {
 	u := models.UserContributionFollow{}
 

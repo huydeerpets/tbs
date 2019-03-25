@@ -16,7 +16,7 @@ type Image struct {
 	FileName    string `json:"fileName"`
 }
 
-// AddImageImageを追加する
+// AddImageImage
 func AddImage(uID int, cID int, p int) (uint, error) {
 	u := &models.UserCharacterImage{
 		UserID:      uID,
@@ -29,7 +29,7 @@ func AddImage(uID int, cID int, p int) (uint, error) {
 	return u.ID, e
 }
 
-// SaveToVoiceType 音声状態をSave
+// SaveToVoiceType 
 func SaveToVoiceType(id int, v int, userID int) error {
 	u := models.UserCharacterImage{}
 
@@ -47,7 +47,7 @@ func SaveToVoiceType(id int, v int, userID int) error {
 	return user.Save()
 }
 
-// GetImageListByUserID ユーザーIDからListを取得する
+// GetImageListByUserID 
 func GetImageListByUserID(uID int) ([]Image, error) {
 	u := models.UserCharacterImage{}
 	image := []Image{}
@@ -68,7 +68,7 @@ func GetImageListByUserID(uID int) ([]Image, error) {
 	return image, err
 }
 
-// DeleteByID IDからDeleteする
+// DeleteByID 
 func DeleteByID(id int, userID int) error {
 	u := models.UserCharacterImage{}
 	userCharacterImage, _, err := u.GetByID(id)
@@ -83,7 +83,7 @@ func DeleteByID(id int, userID int) error {
 	return userCharacterImage.Delete()
 }
 
-// GetImageNameImage名を取得する
+// GetImageName
 func GetImageName(id uint) string {
 	return strconv.Itoa(int(id)) + ".jpg"
 }

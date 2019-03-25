@@ -1,12 +1,12 @@
 package models
 
-// LogContributionImagePost画像ログ
+// LogContributionImagePostImageLog
 type LogContributionImage struct {
 	BaseModel
 	UserContributionID int `json:"user_contribution_id"`
 }
 
-// GetIDAndAdd 追加してIDを取得する
+// GetIDAndAdd Add and get ID
 func (l *LogContributionImage) GetIDAndAdd() (uint, error) {
 	if err := Create(l); err != nil {
 		return 0, err

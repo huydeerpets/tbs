@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// SetConfig コンフィグをSettingする
+// SetConfig 
 func SetConfig() (err error) {
 	if os.Getenv("ENV_CONF_BATCH") == "prod" {
 		err = beego.LoadAppConfig("ini", "/project/blue/dotstamp_deploy/conf/app_prod_blue.conf")
@@ -21,7 +21,7 @@ func SetConfig() (err error) {
 	return err
 }
 
-// Err エラーにする
+// Err 
 func Err(err error, file string) {
 	logs.Err("["+file+"]"+err.Error(), 0)
 

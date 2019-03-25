@@ -1,6 +1,6 @@
 package models
 
-// LogQuestion 問い合わせログ
+// LogQuestion QuestionLog
 type LogQuestion struct {
 	BaseModel
 	UserID int    `json:"user_id"`
@@ -8,7 +8,7 @@ type LogQuestion struct {
 	Body   string `json:"body"`
 }
 
-// Add 追加する
+// Add Add
 func (l *LogQuestion) Add() error {
 	return Create(l)
 }

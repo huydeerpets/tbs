@@ -22,7 +22,7 @@ type Upload struct {
 	VideoStatus        string
 }
 
-// getRootPath パスを取得する
+// getRootPath 
 func getRootPath() (string, error) {
 	p, err := utils.GetAppPath()
 	if err != nil {
@@ -32,7 +32,7 @@ func getRootPath() (string, error) {
 	return p + "/", nil
 }
 
-// Make 作成する
+// Make 
 func Make(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -49,7 +49,7 @@ func Make(file string) error {
 	return err
 }
 
-// ToFilter フィルターする
+// ToFilter 
 func ToFilter(file string) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -66,7 +66,7 @@ func ToFilter(file string) error {
 	return err
 }
 
-// ExecMakeMovie 動画作成を実行する
+// ExecMakeMovie 
 func ExecMakeMovie(id int) error {
 	path, err := getRootPath()
 	if err != nil {
@@ -78,7 +78,7 @@ func ExecMakeMovie(id int) error {
 	return exec.Command("sh", "-c", cmd).Start()
 }
 
-// UploadToYoutube YouTubeにuploadする
+// UploadToYoutube 
 func UploadToYoutube(client *http.Client, u Upload) (string, error) {
 	if utils.IsTest() {
 		return "", nil
@@ -124,7 +124,7 @@ func UploadToYoutube(client *http.Client, u Upload) (string, error) {
 	return response.Id, nil
 }
 
-// RemoveFile ファイルDeleteする
+// RemoveFile 
 func RemoveFile(file string) error {
 	path, err := getRootPath()
 	if err != nil {

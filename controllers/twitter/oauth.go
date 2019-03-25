@@ -11,7 +11,7 @@ type OauthController struct {
 	beego.Controller
 }
 
-// Get 認証する
+// Get Certify
 func (c *OauthController) Get() {
 	c.StartSession()
 

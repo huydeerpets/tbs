@@ -11,26 +11,26 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-// ErrRecordeNotFound レコードなし
+// ErrRecordeNotFound No Record
 const ErrRecordeNotFound = "record not found"
 
-// ErrFileTypeUnMatch レコードなし
+// ErrFileTypeUnMatch No Record
 const ErrFileTypeUnMatch = "file type unmatch"
 
 const (
-	// StatusPublic 状態；公開
+	// StatusPublic status; public
 	StatusPublic = 1
-	// StatusPrivate 状態；非公開
+	// StatusPrivate status; private
 	StatusPrivate = 2
-	// StatusError 状態：エラー
+	// StatusError status: error
 	StatusError = 3
-	// StatusRunning 状態：実行中
+	// StatusRunning Status: Running
 	StatusRunning = 4
-	// StatusReMeake 状態：作り直し
+	// StatusReMeake Condition: Remake
 	StatusReMeake = 5
-	// StatusUploading 状態：upload中
+	// StatusUploading Status: uploading
 	StatusUploading = 6
-	// StatusMade 状態：作成済み
+	// StatusMade status: Created
 	StatusMade = 7
 )
 

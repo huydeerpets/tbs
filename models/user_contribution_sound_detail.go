@@ -7,17 +7,17 @@ import (
 )
 
 const (
-	// TalkTypeText 会話タイプ:テキスト
+	// TalkTypeText 
 	TalkTypeText = 1
-	// TalkTypeImage 会話タイプ:画像
+	// TalkTypeImage 
 	TalkTypeImage = 2
-	// MakeStatusUncreated 状態:未作成
+	// MakeStatusUncreated 
 	MakeStatusUncreated = 2
-	// MakeStatusMade 状態:作成済み
+	// MakeStatusMade
 	MakeStatusMade = 1
 )
 
-// UserContributionSoundDetail ユーザ投稿音声
+// UserContributionSoundDetail 
 type UserContributionSoundDetail struct {
 	BaseModel
 	UserContributionID int    `json:"user_contribution_id"`
@@ -29,7 +29,7 @@ type UserContributionSoundDetail struct {
 	MakeStatus         int    `json:"make_status"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserContributionSoundDetail) Add() error {
 	return Create(u)
 }
@@ -39,7 +39,7 @@ func (u *UserContributionSoundDetail) Save() error {
 	return Save(u)
 }
 
-// GetListByUserContributionIDPostIDからList取得する
+// GetListByUserContributionID
 func (u *UserContributionSoundDetail) GetListByUserContributionID(uID int) (userContributionSoundDetail []UserContributionSoundDetail, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},
@@ -51,7 +51,7 @@ func (u *UserContributionSoundDetail) GetListByUserContributionID(uID int) (user
 	return
 }
 
-// UpdateToMakeStatusByUserContributionIDPostIDから作成状態を更新する
+// UpdateToMakeStatusByUserContributionID
 func (u *UserContributionSoundDetail) UpdateToMakeStatusByUserContributionID(uID int, makeStatus int) (err error) {
 	userContributionSoundDetail := []UserContributionSoundDetail{}
 
@@ -69,7 +69,7 @@ func (u *UserContributionSoundDetail) UpdateToMakeStatusByUserContributionID(uID
 	return
 }
 
-// UpdatesToMakeStatusAndVoiceTypeByUserContributionIDPostIDから作成状態とボイスタイプを更新する
+// UpdatesToMakeStatusAndVoiceTypeByUserContributionID
 func (u *UserContributionSoundDetail) UpdatesToMakeStatusAndVoiceTypeByUserContributionID(uID int, makeStatus int, voiceType int) (err error) {
 	userContributionSoundDetail := []UserContributionSoundDetail{}
 
@@ -88,7 +88,7 @@ func (u *UserContributionSoundDetail) UpdatesToMakeStatusAndVoiceTypeByUserContr
 	return
 }
 
-// GetByID IDから取得する
+// GetByID 
 func (u *UserContributionSoundDetail) GetByID(id uint) (userContributionSoundDetail UserContributionSoundDetail, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -100,7 +100,7 @@ func (u *UserContributionSoundDetail) GetByID(id uint) (userContributionSoundDet
 	return
 }
 
-// GetListByMakeStatusMade 作成済みのList取得する
+// GetListByMakeStatusMade 
 func (u *UserContributionSoundDetail) GetListByMakeStatusMade() (userContributionSoundDetail []UserContributionSoundDetail, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{}
 	option := make(map[string]interface{})

@@ -2,14 +2,14 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// ContributionTotalFollows ユーザー投稿フォロー総数
+// ContributionTotalFollows PostTotalFollow
 type ContributionTotalFollows struct {
 	BaseModel
 	UserContributionID int `json:"user_contribution_id"`
 	Count              int `json:"count"`
 }
 
-// Add 追加する
+// Add Add
 func (c *ContributionTotalFollows) Add() error {
 	return Create(c)
 }
@@ -19,7 +19,7 @@ func (c *ContributionTotalFollows) Save() error {
 	return Save(c)
 }
 
-// GetListByUserContributionID ユーザー投稿IDからListを取得する
+// GetListByUserContributionID Get List from User Post ID
 func (c *ContributionTotalFollows) GetListByUserContributionID(uID []int) (contributionTotalFollows []ContributionTotalFollows, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},
@@ -33,7 +33,7 @@ func (c *ContributionTotalFollows) GetListByUserContributionID(uID []int) (contr
 	return
 }
 
-// Truncate 空にする
+// Truncate truncate
 func (c *ContributionTotalFollows) Truncate() error {
 	return Truncate("contribution_total_follows")
 }

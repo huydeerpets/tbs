@@ -2,19 +2,19 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserContributionTag ユーザー投稿タグ
+// UserContributionTag 
 type UserContributionTag struct {
 	BaseModel
 	UserContributionID int    `json:"user_contribution_id"`
 	Name               string `json:"name"`
 }
 
-// Add 追加する
+// Add
 func (uc *UserContributionTag) Add() (err error) {
 	return Create(uc)
 }
 
-// AddList Listを追加する
+// AddList 
 func (uc *UserContributionTag) AddList(u []UserContributionTag) (err error) {
 	for _, user := range u {
 		if err = Create(&user); err != nil {
@@ -25,7 +25,7 @@ func (uc *UserContributionTag) AddList(u []UserContributionTag) (err error) {
 	return nil
 }
 
-// GetListByUserContributionIDPostIDから取得する
+// GetListByUserContributionID
 func (uc *UserContributionTag) GetListByUserContributionID(id int) (userContributionTag []UserContributionTag, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": id},
@@ -37,7 +37,7 @@ func (uc *UserContributionTag) GetListByUserContributionID(id int) (userContribu
 	return
 }
 
-// GetScanListByUserContributionIDPostIDからスキャン取得する
+// GetScanListByUserContributionID
 func (uc *UserContributionTag) GetScanListByUserContributionID(id int, dest interface{}) error {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": id},
@@ -47,7 +47,7 @@ func (uc *UserContributionTag) GetScanListByUserContributionID(id int, dest inte
 	return GeScanWhere(dest, "user_contribution_tags", "User_contribution_ID = :UserContributionID", whereList, option)
 }
 
-// GetListByUserContributionIDListPostIDListから取得する
+// GetListByUserContributionIDList
 func (uc *UserContributionTag) GetListByUserContributionIDList(idList []int) (userContributionTag []UserContributionTag, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": idList},
@@ -59,7 +59,7 @@ func (uc *UserContributionTag) GetListByUserContributionIDList(idList []int) (us
 	return
 }
 
-// GetScanListByUserContributionIDListPostIDListからスキャン取得する
+// GetScanListByUserContributionIDList
 func (uc *UserContributionTag) GetScanListByUserContributionIDList(idList []int, dest interface{}) error {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": idList},
@@ -69,7 +69,7 @@ func (uc *UserContributionTag) GetScanListByUserContributionIDList(idList []int,
 	return GeScanWhere(dest, "user_contribution_tags", "User_contribution_ID IN :UserContributionID", whereList, option)
 }
 
-// GetByID IDから取得する
+// GetByID 
 func (uc *UserContributionTag) GetByID(id int) (userContributionTag UserContributionTag, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -86,7 +86,7 @@ func (uc *UserContributionTag) Save() error {
 	return Save(uc)
 }
 
-// Delete Deleteする
+// Delete Delete
 func (uc *UserContributionTag) Delete() error {
 	return Delete(uc)
 }

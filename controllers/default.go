@@ -4,12 +4,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// MainController メインControler
+// MainController MainControler
 type MainController struct {
 	beego.Controller
 }
 
-// Get 取得する
+// Get Get
 func (c *MainController) Get() {
 	c.Data["StaticUrl"] = beego.AppConfig.String("staticUrl")
 	c.Data["Version"] = beego.AppConfig.String("staticVersion")

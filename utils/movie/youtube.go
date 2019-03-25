@@ -13,7 +13,7 @@ var (
 	demoScope = make(map[string]string)
 )
 
-// GetConnect 接続を取得する
+// GetConnect 
 func GetConnect() *oauth2.Config {
 	config := &oauth2.Config{
 		ClientID:     beego.AppConfig.String("youtubeClientID"),

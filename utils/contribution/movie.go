@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// AddMovie 動画を追加する
+// AddMovie 
 func AddMovie(uID int, mID string, t int, s int) error {
 	u := models.UserContributionMovie{
 		UserContributionID: uID,
@@ -21,7 +21,7 @@ func AddMovie(uID int, mID string, t int, s int) error {
 	return u.Add()
 }
 
-// AddOrSaveMovie 追加かSave
+// AddOrSaveMovie 
 func AddOrSaveMovie(uID int, mID string, t int, s int) error {
 	u, err := GetMovie(uID, t)
 	if err != nil {
@@ -38,7 +38,7 @@ func AddOrSaveMovie(uID int, mID string, t int, s int) error {
 	return u.Save()
 }
 
-// GetMovie 動画を取得する
+// GetMovie 
 func GetMovie(uID int, t int) (models.UserContributionMovie, error) {
 	u := models.UserContributionMovie{}
 	r, _, err := u.GetByUserContributionID(uID, t)
@@ -46,7 +46,7 @@ func GetMovie(uID int, t int) (models.UserContributionMovie, error) {
 	return r, err
 }
 
-// GetMovieMapByUserContributionIDListPostIDListから動画マップを取得する
+// GetMovieMapByUserContributionIDList
 func GetMovieMapByUserContributionIDList(uID []int, t int) (map[int]models.UserContributionMovie, error) {
 	m := map[int]models.UserContributionMovie{}
 
@@ -63,7 +63,7 @@ func GetMovieMapByUserContributionIDList(uID []int, t int) (map[int]models.UserC
 	return m, err
 }
 
-// ExistsMovie 動画ファイルの存在判定する
+// ExistsMovie 
 func ExistsMovie(uID int) bool {
 	dir := beego.AppConfig.String("movieDir")
 	root, _ := utils.GetAppPath()
@@ -71,7 +71,7 @@ func ExistsMovie(uID int) bool {
 	return utils.ExistsFile(root + "/" + dir + strconv.Itoa(uID) + ".mp4")
 }
 
-// GetMovieListByMovieStatusPublic 公開中の動画Listを取得する
+// GetMovieListByMovieStatusPublic 
 func GetMovieListByMovieStatusPublic() ([]models.UserContributionMovie, error) {
 	u := models.UserContributionMovie{}
 	r, _, err := u.GetListByMovieStatusPublic()
@@ -79,7 +79,7 @@ func GetMovieListByMovieStatusPublic() ([]models.UserContributionMovie, error) {
 	return r, err
 }
 
-// GetMovieListBySpecifiedDays 指定に日数内の音声詳細を取得する
+// GetMovieListBySpecifiedDays 
 func GetMovieListBySpecifiedDays(list []models.UserContributionMovie, day int) []models.UserContributionMovie {
 	limit := utils.Now().Add(-1 * time.Duration(day) * 24 * time.Hour).Unix()
 	r := []models.UserContributionMovie{}

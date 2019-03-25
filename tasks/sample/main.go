@@ -20,7 +20,7 @@ func main() {
 	log.Println(r.Body)
 	defer r.Body.Close()
 
-	// Bodyを読み込む
+	// Body Load the content
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Println(err.Error())

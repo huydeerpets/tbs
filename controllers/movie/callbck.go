@@ -18,7 +18,7 @@ type CallbackRequest struct {
 	UserContributionID int    `form:"state"`
 }
 
-// Get Callbackする
+// Get Callback
 func (c *CallbackController) Get() {
 	request := CallbackRequest{}
 	if err := c.ParseForm(&request); err != nil {

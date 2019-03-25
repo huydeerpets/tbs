@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{{.StaticUrl}}css/sticky-footer.css{{.Version}}" />
         <link rel="stylesheet" type="text/css" href="{{.StaticUrl}}css/app.min.css{{.Version}}" />
         <link rel="stylesheet" type="text/css" href="{{.StaticUrl}}css/app.min.css{{.Version}}" />
-        <link rel="stylesheet" type="text/css" href="{{.StaticUrl}}css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{.StaticUrl}}css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>TheBigSale</title>
     </head>

@@ -5,13 +5,13 @@ import (
 	"github.com/huydeerpets/tbs/utils/user"
 )
 
-// GetResponse 詳細response
+// GetResponse Detail response
 type GetResponse struct {
 	User    user.User      `json:"user"`
 	Profile []user.Profile `json:"profiles"`
 }
 
-// Get ユーザー情報
+// Get User information
 func (c *MainController) Get() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

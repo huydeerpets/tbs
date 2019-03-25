@@ -2,7 +2,7 @@ package csvModels
 
 import "strconv"
 
-// VoiceType 音声タイプ
+// VoiceType voicetype
 type VoiceType struct {
 	ID              string
 	Name            string
@@ -12,37 +12,37 @@ type VoiceType struct {
 }
 
 const (
-	// VoiceSystemTypeOpenjtalk タイプ：open-jtalk
+	// VoiceSystemTypeOpenjtalk Type：open-jtalk
 	VoiceSystemTypeOpenjtalk = 1
-	// VoiceSystemTypeAquesTalk タイプ：AquesTalk
+	// VoiceSystemTypeAquesTalk Type：AquesTalk
 	VoiceSystemTypeAquesTalk = 2
 )
 
 const (
-	// VoiceTypeMeiNormal 音声タイプ:mei_normal
+	// VoiceTypeMeiNormal VoiceType:mei_normal
 	VoiceTypeMeiNormal = 1
-	// VoiceTypeMeiAngry 音声タイプ:mei_angry
+	// VoiceTypeMeiAngry VoiceType:mei_angry
 	VoiceTypeMeiAngry = 2
-	// VoiceTypeMeiBashful 音声タイプ:mei_bashful
+	// VoiceTypeMeiBashful VoiceType:mei_bashful
 	VoiceTypeMeiBashful = 3
-	// VoiceTypeMeiHappy 音声タイプ:mei_happy
+	// VoiceTypeMeiHappy VoiceType:mei_happy
 	VoiceTypeMeiHappy = 4
-	// VoiceTypeMeiSad 音声タイプ:mei_sad
+	// VoiceTypeMeiSad VoiceType:mei_sad
 	VoiceTypeMeiSad = 5
-	// VoiceTypeM100 音声タイプ:m100
+	// VoiceTypeM100 VoiceType:m100
 	VoiceTypeM100 = 6
-	// VoiceTypeYukkuri 音声タイプ:ゆっくり
+	// VoiceTypeYukkuri VoiceType:slowly
 	VoiceTypeYukkuri = 7
 )
 
-// GetStructAll 全てを取得する
+// GetStructAll Get All
 func (c *VoiceType) GetStructAll() (r []VoiceType, err error) {
 	err = GetAll("voice_type.csv", &r)
 
 	return r, err
 }
 
-// GetStruct 取得する
+// GetStruct Get
 func (c *VoiceType) GetStruct(voiceType int) (r VoiceType, err error) {
 	list, err := c.GetStructAll()
 	if err != nil {

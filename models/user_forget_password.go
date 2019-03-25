@@ -2,29 +2,29 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserForgetPassword ユーザの忘れたパスワード
+// UserForgetPassword 
 type UserForgetPassword struct {
 	BaseModel
 	Email   string `json:"email"`
 	Keyword string `json:"keyword"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserForgetPassword) Add() error {
 	return Create(u)
 }
 
-// Delete Deleteする
+// Delete Delete
 func (u *UserForgetPassword) Delete() error {
 	return Delete(u)
 }
 
-// DeleteList ListをDeleteする
+// DeleteList 
 func (u *UserForgetPassword) DeleteList(userForgetPassword []UserForgetPassword) error {
 	return Delete(userForgetPassword)
 }
 
-// GetByEmail メールアドレスから取得する
+// GetByEmail 
 func (u *UserForgetPassword) GetByEmail(email string) (userForgetPassword UserForgetPassword, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"Email": email},
@@ -36,7 +36,7 @@ func (u *UserForgetPassword) GetByEmail(email string) (userForgetPassword UserFo
 	return
 }
 
-// GetListByEmail メールアドレスからListを取得する
+// GetListByEmail 
 func (u *UserForgetPassword) GetListByEmail(email string) (userForgetPassword []UserForgetPassword, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"Email": email},

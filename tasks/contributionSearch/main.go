@@ -31,7 +31,7 @@ func main() {
 	logs.Batch("finish", "contributionSearch")
 }
 
-// ResetSearch 検索をリセットする
+// ResetSearch 
 func ResetSearch() error {
 	if err = contributions.TruncateSearch(); err != nil {
 		return err

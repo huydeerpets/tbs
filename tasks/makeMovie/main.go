@@ -35,7 +35,7 @@ func main() {
 
 }
 
-// MakeMovie 動画を作成する
+// MakeMovie 
 func MakeMovie(id int) error {
 
 	if id == 0 {
@@ -71,7 +71,7 @@ func MakeMovie(id int) error {
 		return err
 	}
 
-	// 音声ファイル作成
+	// Audio file creation
 	if err = contributions.MakeSoundFile(id, list); err != nil {
 		return err
 	}
@@ -84,7 +84,7 @@ func MakeMovie(id int) error {
 		return err
 	}
 
-	// 動画ファイル作成
+	// Movie file creation
 	if err = movie.Make(strconv.Itoa(id)); err != nil {
 		return err
 	}

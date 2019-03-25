@@ -1,13 +1,13 @@
 package models
 
 const (
-	// ProblemTypeSpam 問題タイプ：スパム
+	// ProblemTypeSpam Problem type: Spam
 	ProblemTypeSpam = 1
-	// ProblemTypeInappropriate 問題タイプ：不適切
+	// ProblemTypeInappropriate Problem type: Inappropriate
 	ProblemTypeInappropriate = 2
 )
 
-// LogProblemContributionReportPost画像ログ
+// LogProblemContributionPostProblemReport
 type LogProblemContributionReport struct {
 	BaseModel
 	UserID             int `json:"user_id"`
@@ -15,7 +15,7 @@ type LogProblemContributionReport struct {
 	UserContributionID int `json:"user_contribution_id"`
 }
 
-// Add 追加する
+// Add Add
 func (l *LogProblemContributionReport) Add() error {
 	return Create(l)
 }

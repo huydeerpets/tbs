@@ -8,10 +8,10 @@ import (
 	"github.com/huydeerpets/tbs/utils"
 )
 
-// TagMaxNumber タグの最大数
+// TagMaxNumber 
 const TagMaxNumber = 10
 
-// Tag タグ
+// Tag 
 type Tag struct {
 	ID                 uint   `json:"id"`
 	UserContributionID int    `json:"userContributionID"`
@@ -31,7 +31,7 @@ func Save(id int, n string) (err error) {
 	return u.Save()
 }
 
-// DeleteByIDAndUserContributionID IDと投稿IDからDeleteする
+// DeleteByIDAndUserContributionID
 func DeleteByIDAndUserContributionID(id int, cID int) (err error) {
 	u := models.UserContributionTag{}
 	u, _, err = u.GetByID(id)
@@ -47,7 +47,7 @@ func DeleteByIDAndUserContributionID(id int, cID int) (err error) {
 	return u.Delete()
 }
 
-// Add 追加する
+// Add
 func Add(uID int, n string) error {
 	u := models.UserContributionTag{
 		UserContributionID: uID,
@@ -57,7 +57,7 @@ func Add(uID int, n string) error {
 	return u.Add()
 }
 
-// AddList 追加する
+// AddList 
 func AddList(uID int, n string) error {
 	n = strings.Replace(strings.TrimSpace(n), "　", " ", -1)
 	namelist := strings.Split(n, " ")
@@ -95,7 +95,7 @@ func AddList(uID int, n string) error {
 	return uct.AddList(userContributionTag)
 }
 
-// GetListByUserContributionIDPostIDからListを取得する
+// GetListByUserContributionID
 func GetListByUserContributionID(uID int) ([]Tag, error) {
 	u := &models.UserContributionTag{}
 	tag := []Tag{}
@@ -112,7 +112,7 @@ func GetListByUserContributionID(uID int) ([]Tag, error) {
 	return tag, nil
 }
 
-// GetMapByUserContributionIDListPostIDからマップを取得する
+// GetMapByUserContributionIDList
 func GetMapByUserContributionIDList(uIDList []int) (map[int][]Tag, error) {
 	tagMap := map[int][]Tag{}
 
@@ -129,7 +129,7 @@ func GetMapByUserContributionIDList(uIDList []int) (map[int][]Tag, error) {
 	return tagMap, nil
 }
 
-// GetTagNameJoin 連結したタグ名を取得する
+// GetTagNameJoin 
 func GetTagNameJoin(uID int) (string, error) {
 	t, err := GetListByUserContributionID(uID)
 	if err != nil {
@@ -139,7 +139,7 @@ func GetTagNameJoin(uID int) (string, error) {
 	return ToTagNameJoin(t), nil
 }
 
-// ToTagNameJoin タグ名を連結する
+// ToTagNameJoin 
 func ToTagNameJoin(t []Tag) string {
 	list := []string{}
 	for _, v := range t {

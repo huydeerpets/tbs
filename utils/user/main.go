@@ -10,21 +10,21 @@ import (
 	"gopkg.in/go-playground/validator.v9"
 )
 
-// User ユーザー情報
+// User 
 type User struct {
 	ID             uint   `json:"id"`
 	Name           string `json:"name"`
 	ProfileImageID int    `json:"profileImageID"`
 }
 
-// GetPassword パスワードを取得する
+// GetPassword 
 func GetPassword(pass string) string {
 	key := beego.AppConfig.String("loginKey")
 
 	return utils.SrringToEncryption(pass + key)
 }
 
-// Add ユーザー登録する
+// Add 
 func Add(email string, name string, pass string) (uint, error) {
 	u := models.UserMaster{
 		Email:    email,
@@ -40,7 +40,7 @@ func Add(email string, name string, pass string) (uint, error) {
 	return u.GetIDAndAdd()
 }
 
-// GetByEmail メールアドレスから取得する
+// GetByEmail 
 func GetByEmail(email string) (models.UserMaster, error) {
 	u := &models.UserMaster{}
 
@@ -49,7 +49,7 @@ func GetByEmail(email string) (models.UserMaster, error) {
 	return r, err
 }
 
-// GetByEmailAndPassword メールアドレスとパスワードから取得する
+// GetByEmailAndPassword 
 func GetByEmailAndPassword(email string, password string) (u models.UserMaster, err error) {
 	u, err = GetByEmail(email)
 	if err != nil {
@@ -63,7 +63,7 @@ func GetByEmailAndPassword(email string, password string) (u models.UserMaster, 
 	return u, nil
 }
 
-// GetByUserID ユーザIDから取得する
+// GetByUserID 
 func GetByUserID(userID int) (User, error) {
 	u := &models.UserMaster{}
 	user := User{}
@@ -76,7 +76,7 @@ func GetByUserID(userID int) (User, error) {
 	return user, err
 }
 
-// UpadateToProfileImageIDProfile画像IDを更新する
+// UpadateToProfileImageID
 func UpadateToProfileImageID(uID int, pID int) error {
 	u := &models.UserMaster{}
 	userMaster, _, err := u.GetByID(uID)
@@ -89,7 +89,7 @@ func UpadateToProfileImageID(uID int, pID int) error {
 	return userMaster.Save()
 }
 
-// Upadate 更新する
+// Upadate 
 func Upadate(uID int, n string) error {
 	u := &models.UserMaster{}
 	userMaster, _, err := u.GetByID(uID)
@@ -102,7 +102,7 @@ func Upadate(uID int, n string) error {
 	return userMaster.Save()
 }
 
-// GetMaptByUserIDList ユーザIDListからマップを取得する
+// GetMaptByUserIDList 
 func GetMaptByUserIDList(userIDList []int) (map[int]User, error) {
 	userMap := map[int]User{}
 
@@ -120,7 +120,7 @@ func GetMaptByUserIDList(userIDList []int) (map[int]User, error) {
 	return userMap, nil
 }
 
-// UpadateToPassword パスワードを更新する
+// UpadateToPassword 
 func UpadateToPassword(email string, password string) error {
 	u, err := GetByEmail(email)
 	if err != nil {

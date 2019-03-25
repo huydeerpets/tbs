@@ -1,13 +1,13 @@
 package models
 
-// LogUserContributionPost画像ログ
+// LogUserContributionPostLog
 type LogUserContribution struct {
 	BaseModel
 	UserContributionID int `json:"user_contribution_id"`
 	UserID             int `json:"user_id"`
 }
 
-// Add 追加する
+// Add Add
 func (l *LogUserContribution) Add() error {
 	return Create(l)
 }

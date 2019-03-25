@@ -141,7 +141,7 @@ func (c *ReflectController) Post() {
 		}
 	}
 
-	// 新規データ追加
+	// Add new data
 	if len(body) > len(list) {
 		addBody := body[len(list):]
 

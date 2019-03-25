@@ -5,20 +5,20 @@ import (
 )
 
 const (
-	// SoundStatusPublic 音声公開状態
+	// SoundStatusPublic 
 	SoundStatusPublic = 1
-	// SoundStatusPrivate 音声非公開状態
+	// SoundStatusPrivate 
 	SoundStatusPrivate = 2
 )
 
-// UserContributionSound ユーザ投稿音声
+// UserContributionSound 
 type UserContributionSound struct {
 	BaseModel
 	UserContributionID int `json:"user_contribution_id"`
 	SoundStatus        int `json:"sound_status"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserContributionSound) Add() error {
 	return Create(u)
 }
@@ -28,7 +28,7 @@ func (u *UserContributionSound) Save() error {
 	return Save(u)
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID
 func (u *UserContributionSound) GetByUserContributionID(uID int) (userContributionSound UserContributionSound, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},
@@ -40,7 +40,7 @@ func (u *UserContributionSound) GetByUserContributionID(uID int) (userContributi
 	return
 }
 
-// GetListByUserContributionIDListPostIDListからList取得する
+// GetListByUserContributionIDList
 func (u *UserContributionSound) GetListByUserContributionIDList(uID []int) (userContributionSound []UserContributionSound, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},

@@ -65,7 +65,7 @@ func Save(userContributionID int, userID int, title string, v int) error {
 	return u.Save()
 }
 
-// DeleteByID Deleteする
+// DeleteByID Delete
 func DeleteByID(userContributionID int, userID int) error {
 	uc, err := GetByUserContributionID(userContributionID)
 	if err != nil {
@@ -88,7 +88,7 @@ func DeleteByID(userContributionID int, userID int) error {
 	return ucd.Delete()
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID
 func GetByUserContributionID(userContributionID int) (models.UserContribution, error) {
 	userContribution := &models.UserContribution{}
 
@@ -97,7 +97,7 @@ func GetByUserContributionID(userContributionID int) (models.UserContribution, e
 	return r, err
 }
 
-// GetListByUserID ユーザIDからList取得する
+// GetListByUserID 
 func GetListByUserID(userID int, order string, limit int, offset int) ([]models.UserContribution, error) {
 	u := &models.UserContribution{}
 
@@ -106,14 +106,14 @@ func GetListByUserID(userID int, order string, limit int, offset int) ([]models.
 	return r, err
 }
 
-// GetCountByUserID ユーザIDから数を取得する
+// GetCountByUserID 
 func GetCountByUserID(userID int, order string) (int, error) {
 	u := &models.UserContribution{}
 
 	return u.GetCountByUserID(userID, order)
 }
 
-// GetContributionByUserContributionIDPostIDから取得する
+// GetContributionByUserContributionID
 func GetContributionByUserContributionID(userContributionID int) (c Contribution, err error) {
 	uc, err := GetByUserContributionID(userContributionID)
 	if err != nil {
@@ -155,7 +155,7 @@ func GetContributionByUserContributionID(userContributionID int) (c Contribution
 	return contribution, nil
 }
 
-// getContributionListPostListを取得する
+// getContributionListPostList
 func getContributionList(u []models.UserContribution) (contributionList []Contribution, err error) {
 	if len(u) == 0 {
 		return contributionList, nil

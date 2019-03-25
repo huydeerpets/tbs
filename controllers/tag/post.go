@@ -12,20 +12,20 @@ import (
 	validator "gopkg.in/go-playground/validator.v9"
 )
 
-// PostdRequest 追加request
+// PostdRequest Postrequest
 type PostdRequest struct {
 	UserContributionID int    `form:"userContributionId"`
 	Name               string `form:"name" validate:"min=1,max=20"`
 }
 
-// PostResponse 追加response
+// PostResponse Postresponse
 type PostResponse struct {
 	Warning bool       `json:"warning"`
 	Message string     `json:"message"`
 	Tag     []tags.Tag `json:"tags"`
 }
 
-// Post 追加する
+// Post Post
 func (c *MainController) Post() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

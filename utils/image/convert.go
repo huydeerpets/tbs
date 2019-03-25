@@ -9,10 +9,10 @@ import (
 	"os"
 )
 
-// FileSizeMax 最大uploadファイルサイズ
+// FileSizeMax 
 const FileSizeMax = 600000
 
-// PngToJpeg pngをjpegに変換する
+// PngToJpeg 
 func PngToJpeg(src string, dest string) error {
 	var inFile *os.File
 	var outFile *os.File
@@ -80,7 +80,7 @@ func getFormat(file *os.File) string {
 	return ""
 }
 
-// alphaToWhite 透明色を白色にする
+// alphaToWhite 
 func alphaToWhite(inputImage image.Image) image.Image {
 	rect := inputImage.Bounds()
 	width := rect.Size().X
@@ -90,11 +90,11 @@ func alphaToWhite(inputImage image.Image) image.Image {
 	for x := 0; x < width; x++ {
 		for y := 0; y < height; y++ {
 			var col color.RGBA
-			// 座標(x,y)のR, G, B, α の値を取得
+			// Get the values ​​of R, G, B, α at coordinates (x, y)
 			r, g, b, a := inputImage.At(x, y).RGBA()
 
 			if a == 0 {
-				// 透過色は白色に変換する
+				// Transparent color is converted to white
 				r = 65535
 				g = 65535
 				b = 65535
@@ -112,7 +112,7 @@ func alphaToWhite(inputImage image.Image) image.Image {
 	return rgba.SubImage(rect)
 }
 
-// ToPng pngに変換する
+// ToPng 
 func ToPng(src string, dest string) error {
 	var inFile *os.File
 	var outFile *os.File

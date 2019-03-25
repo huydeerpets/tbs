@@ -4,7 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// UserContributionUpload ユーザ投稿upload
+// UserContributionUpload 
 type UserContributionUpload struct {
 	BaseModel
 	UserID             int    `json:"user_id"`
@@ -12,7 +12,7 @@ type UserContributionUpload struct {
 	Token              string `json:"token"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserContributionUpload) Add() error {
 	return Create(u)
 }
@@ -22,7 +22,7 @@ func (u *UserContributionUpload) Save() error {
 	return Save(u)
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID
 func (u *UserContributionUpload) GetByUserContributionID(uID int) (userContributionUpload UserContributionUpload, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},

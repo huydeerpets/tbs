@@ -12,23 +12,23 @@ import (
 	validator "gopkg.in/go-playground/validator.v9"
 )
 
-// SaveVoiceListController ボイスList更新Controler
+// SaveVoiceListController SaveVoiceListControler
 type SaveVoiceListController struct {
 	controllers.BaseController
 }
 
-// SaveVoiceListRequest ボイスList更新request
+// SaveVoiceListRequest SaveVoiceListrequest
 type SaveVoiceListRequest struct {
 	VoiceType int `form:"voiceType" validate:"min=1"`
 }
 
-// SaveVoiceListResponse ボイスList更新response
+// SaveVoiceListResponse SaveVoiceListresponse
 type SaveVoiceListResponse struct {
 	Warning bool   `json:"warning"`
 	Message string `json:"message"`
 }
 
-// Put ボイスListを更新する
+// Put SaveVoiceList
 func (c *SaveVoiceListController) Put() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

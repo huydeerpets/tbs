@@ -6,7 +6,7 @@ import (
 
 var session = make(map[string]interface{})
 
-// isSession セッションを使用するか判定する
+// isSession Determine if you want to use a session
 func isSession() bool {
 	if beego.AppConfig.String("runmode") == "test" {
 		return false
@@ -15,7 +15,7 @@ func isSession() bool {
 	return true
 }
 
-// GetUserID ユーザIDを取得する
+// GetUserID Get user ID
 func (c *BaseController) GetUserID() int {
 	if !isSession() {
 		r, _ := c.GetInt("user_id", 1)
@@ -33,7 +33,7 @@ func (c *BaseController) GetUserID() int {
 	return noUserID
 }
 
-// GetSession セッションを取得する
+// GetSession Get a session
 func (c *BaseController) GetSession(name string) interface{} {
 	if !isSession() {
 		return session[name]
@@ -45,7 +45,7 @@ func (c *BaseController) GetSession(name string) interface{} {
 	return c.CruSession.Get(name)
 }
 
-// SetSession セッションをSettingする
+// SetSession Set the session
 func (c *BaseController) SetSession(name string, value interface{}) {
 	if !isSession() {
 		session[name] = value
@@ -58,7 +58,7 @@ func (c *BaseController) SetSession(name string, value interface{}) {
 	c.CruSession.Set(name, value)
 }
 
-// DelSession セッションをDeleteする
+// DelSession Delete session
 func (c *BaseController) DelSession(name string) {
 	if !isSession() {
 		delete(session, name)

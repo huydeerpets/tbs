@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// LogFile ログファイルを開く
+// LogFile 
 func LogFile(file string) (o *os.File, err error) {
 	logDir := beego.AppConfig.String("logDir")
 	if logDir == "" {
@@ -24,17 +24,17 @@ func LogFile(file string) (o *os.File, err error) {
 	return os.OpenFile(logDir+"/"+file+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 }
 
-// Err エラーを出力する
+// Err 
 func Err(v interface{}, userID int) error {
 	return output("error", v, userID)
 }
 
-// Batch 実行を出力する
+// Batch
 func Batch(v interface{}, batchName string) error {
 	return output("batch", v, batchName)
 }
 
-// Output 出力する
+// Output
 func output(file string, v interface{}, t interface{}) error {
 	logfile, err := LogFile(file)
 	if err != nil {
@@ -49,7 +49,7 @@ func output(file string, v interface{}, t interface{}) error {
 	return nil
 }
 
-// RemoveLogFile ログファイルDeleteする
+// RemoveLogFile 
 func RemoveLogFile(file string) error {
 	apppath, err := utils.GetAppPath()
 	if err != nil {

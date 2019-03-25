@@ -22,7 +22,7 @@ func main() {
 	contribution()
 }
 
-// contributionPostを確認する
+// contribution
 func contribution() error {
 	contributionIDList, err := contributions.GetViewStatusPublicIDList()
 	if err != nil {

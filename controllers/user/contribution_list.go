@@ -28,7 +28,7 @@ type ContributionListResponse struct {
 	Count      int                       `json:"count"`
 }
 
-// Post ユーザー投稿一覧を取得する
+// Post Get user post list
 func (c *ContributionListController) Post() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

@@ -4,7 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// UserContributionSoundLength ユーザ投稿音声長さ
+// UserContributionSoundLength 
 type UserContributionSoundLength struct {
 	BaseModel
 	UserContributionID int `json:"user_contribution_id"`
@@ -12,7 +12,7 @@ type UserContributionSoundLength struct {
 	Length             int `json:"length"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserContributionSoundLength) Add() error {
 	return Create(u)
 }
@@ -22,7 +22,7 @@ func (u *UserContributionSoundLength) Save() error {
 	return Save(u)
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID
 func (u *UserContributionSoundLength) GetByUserContributionID(uID int) (userContributionSoundLength UserContributionSoundLength, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},
@@ -34,7 +34,7 @@ func (u *UserContributionSoundLength) GetByUserContributionID(uID int) (userCont
 	return
 }
 
-// GetByTop 新着から投稿List取得する
+// GetByTop 
 func (u *UserContributionSoundLength) GetByTop(o int, s int) (userContributionSoundLength []UserContributionSoundLength, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{}
 

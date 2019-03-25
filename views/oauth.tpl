@@ -7,7 +7,7 @@
     <body>
 <script>
 var url =
-  "exp://exp.host/@wheatandcat/dotstamp/+" +
+  "exp://exp.host/@huydeerpets/thebigsale/+" +
   "?_login={{.login}}&email={{.email}}"
 window.location = url
 document.write("Authenticating...")

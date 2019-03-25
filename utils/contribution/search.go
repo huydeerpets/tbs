@@ -2,26 +2,26 @@ package contributions
 
 import "github.com/huydeerpets/tbs/models"
 
-// SearchValue 検索値
+// SearchValue 
 type SearchValue struct {
 	UserContributionID int
 	Search             string
 	Order              int
 }
 
-// SearchWord 検索文
+// SearchWord 
 type SearchWord struct {
 	Title string
 	Body  string
 	Tag   string
 }
 
-// JoinSearchWord 検索文を連結する
+// JoinSearchWord 
 func JoinSearchWord(s SearchWord) string {
 	return s.Title + "/" + s.Body + "/" + s.Tag
 }
 
-// GetSearchWordBody 検索本文を取得する
+// GetSearchWordBody 
 func GetSearchWordBody(body string) (s string, err error) {
 	b, err := StirngToGetBody(body)
 	if err != nil {
@@ -35,7 +35,7 @@ func GetSearchWordBody(body string) (s string, err error) {
 	return s, nil
 }
 
-// AddSearch 検索を追加する
+// AddSearch 
 func AddSearch(uID int, search string) error {
 	u := models.UserContributionSearch{
 		UserContributionID: uID,
@@ -45,7 +45,7 @@ func AddSearch(uID int, search string) error {
 	return u.Add()
 }
 
-// GetSearchByUserContributionIDPostIDから取得する
+// GetSearchByUserContributionID
 func GetSearchByUserContributionID(uID int) (models.UserContributionSearch, error) {
 	u := models.UserContributionSearch{}
 	r, _, err := u.GetByUserContributionID(uID)
@@ -53,7 +53,7 @@ func GetSearchByUserContributionID(uID int) (models.UserContributionSearch, erro
 	return r, err
 }
 
-// GetSearchListByUserContributionIDListPostIDListからList取得する
+// GetSearchListByUserContributionIDList
 func GetSearchListByUserContributionIDList(uID []int) ([]models.UserContributionSearch, error) {
 	u := models.UserContributionSearch{}
 	r, _, err := u.GetListByUserContributionIDList(uID)
@@ -61,7 +61,7 @@ func GetSearchListByUserContributionIDList(uID []int) ([]models.UserContribution
 	return r, err
 }
 
-// AddOrSaveSearch 検索を追加かSave
+// AddOrSaveSearch 
 func AddOrSaveSearch(uID int, s string) error {
 	u, err := GetSearchByUserContributionID(uID)
 	if err != nil {
@@ -76,7 +76,7 @@ func AddOrSaveSearch(uID int, s string) error {
 	return u.Save()
 }
 
-// DeleteSearchByUserContributionIDPostIDからDeleteする
+// DeleteSearchByUserContributionID
 func DeleteSearchByUserContributionID(uID int) error {
 	u, err := GetSearchByUserContributionID(uID)
 	if err != nil {
@@ -90,7 +90,7 @@ func DeleteSearchByUserContributionID(uID int) error {
 	return u.Delete()
 }
 
-// GetSearchValueListBySearch 検索から検索値Listを取得する
+// GetSearchValueListBySearch 
 func GetSearchValueListBySearch(search string, order string, limit int, offset int) ([]SearchValue, error) {
 	s := []SearchValue{}
 
@@ -117,7 +117,7 @@ func GetSearchValueListBySearch(search string, order string, limit int, offset i
 	return s, nil
 }
 
-// SaveToFollowCountFollow数をSave
+// SaveToFollowCountFollow
 func SaveToFollowCount(u []models.UserContributionSearch, m map[int]int) error {
 	for _, v := range u {
 		if v.FollowCount != m[v.UserContributionID] {
@@ -131,14 +131,14 @@ func SaveToFollowCount(u []models.UserContributionSearch, m map[int]int) error {
 	return nil
 }
 
-// GetCountBySearch 検索から数を取得する
+// GetCountBySearch
 func GetCountBySearch(search string, order string) (int, error) {
 	u := models.UserContributionSearch{}
 
 	return u.GetCountBySearch(search, order)
 }
 
-// TruncateSearch 検索を空にする
+// TruncateSearch 
 func TruncateSearch() error {
 	u := models.UserContributionSearch{}
 

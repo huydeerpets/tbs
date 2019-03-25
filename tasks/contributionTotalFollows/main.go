@@ -42,7 +42,7 @@ func main() {
 	logs.Batch("finish", "contributionTotalFollows")
 }
 
-// AddContributionTotalFollowsFollow数を追加する
+// AddContributionTotalFollowsAdd a Follow number
 func AddContributionTotalFollows() error {
 	contributionIDList, err = contributions.GetViewStatusPublicIDList()
 	if err != nil {
@@ -65,7 +65,7 @@ func AddContributionTotalFollows() error {
 	return nil
 }
 
-// SaveUserContributionSearchToFollowCount 検索のフォロー数を更新する
+// SaveUserContributionSearchToFollowCount Update Search Follows
 func SaveUserContributionSearchToFollowCount() error {
 	search, err := contributions.GetSearchListByUserContributionIDList(contributionIDList)
 	if err != nil {

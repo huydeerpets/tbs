@@ -13,7 +13,7 @@ type Profile struct {
 	Created time.Time `json:"created"`
 }
 
-// GetProfileImageListByUserID ユーザIDからプロフィール画像Listを取得する
+// GetProfileImageListByUserID 
 func GetProfileImageListByUserID(uID int) ([]Profile, error) {
 
 	profile := []Profile{}
@@ -27,7 +27,7 @@ func GetProfileImageListByUserID(uID int) ([]Profile, error) {
 	return profile, nil
 }
 
-// GetIDAndAddProfileImageProfile画像を追加してIDを取得する
+// GetIDAndAddProfileImage
 func GetIDAndAddProfileImage(uID int) (uint, error) {
 	u := models.UserProfileImage{
 		UserID: uID,

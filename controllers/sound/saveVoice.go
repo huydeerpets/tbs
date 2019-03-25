@@ -10,25 +10,25 @@ import (
 	validator "gopkg.in/go-playground/validator.v9"
 )
 
-// SaveVoiceController ボイス保存Controler
+// SaveVoiceController SaveVoiceControler
 type SaveVoiceController struct {
 	controllers.BaseController
 }
 
-// SaveVoicedRequest ボイス保存request
+// SaveVoicedRequest SaveVoicerequest
 type SaveVoicedRequest struct {
 	ID        uint `form:"id" validate:"min=1"`
 	VoiceType int  `form:"voiceType" validate:"min=1"`
 }
 
-// SaveVoiceResponse ボイス保存response
+// SaveVoiceResponse SaveVoiceresponse
 type SaveVoiceResponse struct {
 	Warning bool   `json:"warning"`
 	Message string `json:"message"`
 	ID      uint   `json:"id"`
 }
 
-// Put ボイスSave
+// Put SaveVoice
 func (c *SaveVoiceController) Put() {
 	userID := c.GetUserID()
 	if !c.IsNoLogin(userID) {

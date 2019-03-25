@@ -2,14 +2,14 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserContributionDetail ユーザー投稿詳細
+// UserContributionDetail
 type UserContributionDetail struct {
 	BaseModel
 	UserContributionID int    `json:"user_contribution_id"`
 	Body               string `json:"body"`
 }
 
-// Add 追加する
+// Add
 func (u *UserContributionDetail) Add() error {
 	return Create(u)
 }
@@ -19,12 +19,12 @@ func (u *UserContributionDetail) Save() error {
 	return Save(u)
 }
 
-// Delete Deleteする
+// Delete Delete
 func (u *UserContributionDetail) Delete() error {
 	return Delete(u)
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID Get from PostID
 func (u *UserContributionDetail) GetByUserContributionID(uID int) (userContributionDetail UserContributionDetail, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},

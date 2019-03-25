@@ -2,14 +2,14 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserContributionFollow ユーザー投稿フォロー
+// UserContributionFollow 
 type UserContributionFollow struct {
 	BaseModel
 	UserID             int `json:"user_id"`
 	UserContributionID int `json:"user_contribution_id"`
 }
 
-// Add 追加する
+// Add 
 func (u *UserContributionFollow) Add() error {
 	return Create(u)
 }
@@ -19,7 +19,7 @@ func (u *UserContributionFollow) Delete() error {
 	return Delete(u)
 }
 
-// GetByID IDから取得する
+// GetByID 
 func (u *UserContributionFollow) GetByID(id uint) (userContributionFollow UserContributionFollow, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -31,7 +31,7 @@ func (u *UserContributionFollow) GetByID(id uint) (userContributionFollow UserCo
 	return
 }
 
-// GetListByUserContributionIDPostIDから取得する
+// GetListByUserContributionID
 func (u *UserContributionFollow) GetListByUserContributionID(ucID int) (userContributionFollow []UserContributionFollow, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": ucID},
@@ -43,7 +43,7 @@ func (u *UserContributionFollow) GetListByUserContributionID(ucID int) (userCont
 	return
 }
 
-// GetCountByUserContributionIDPostIDから数を取得する
+// GetCountByUserContributionID
 func (u *UserContributionFollow) GetCountByUserContributionID(ucID int) (int, error) {
 	userContributionFollow := []UserContributionFollow{}
 
@@ -55,7 +55,7 @@ func (u *UserContributionFollow) GetCountByUserContributionID(ucID int) (int, er
 	return GetCount(&userContributionFollow, "user_contribution_follows", "User_contribution_ID = :UserContributionID AND Deleted_at IS NULL", whereList, option)
 }
 
-// GetListByUserContributionIDListPostIDListから取得する
+// GetListByUserContributionIDList
 func (u *UserContributionFollow) GetListByUserContributionIDList(ucID []int) (userContributionFollow []UserContributionFollow, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": ucID},
@@ -69,7 +69,7 @@ func (u *UserContributionFollow) GetListByUserContributionIDList(ucID []int) (us
 	return
 }
 
-// GetByUserIDAndUserContributionID ユーザIDと投稿IDから取得する
+// GetByUserIDAndUserContributionID 
 func (u *UserContributionFollow) GetByUserIDAndUserContributionID(uID int, ucID int) (userContributionFollow UserContributionFollow, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserID": uID},
@@ -82,7 +82,7 @@ func (u *UserContributionFollow) GetByUserIDAndUserContributionID(uID int, ucID 
 	return
 }
 
-// GetCountByUserIDAndUserContributionID ユーザIDと投稿IDから数を取得する
+// GetCountByUserIDAndUserContributionID 
 func (u *UserContributionFollow) GetCountByUserIDAndUserContributionID(uID int, ucID int) (int, error) {
 	userContributionFollow := []UserContributionFollow{}
 
@@ -95,7 +95,7 @@ func (u *UserContributionFollow) GetCountByUserIDAndUserContributionID(uID int, 
 	return GetCount(&userContributionFollow, "user_contribution_follows", "User_ID = :UserID AND User_contribution_ID = :UserContributionID AND Deleted_at IS NULL", whereList, option)
 }
 
-// GetCountByUserID ユーザIDから数を取得する
+// GetCountByUserID 
 func (u *UserContributionFollow) GetCountByUserID(uID int, order string) (int, error) {
 	userContributionFollow := []UserContributionFollow{}
 
@@ -107,7 +107,7 @@ func (u *UserContributionFollow) GetCountByUserID(uID int, order string) (int, e
 	return GetCount(&userContributionFollow, "user_contribution_follows", "User_ID = :UserID AND Deleted_at IS NULL", whereList, option)
 }
 
-// GetListByUserID ユーザIDからListを取得する
+// GetListByUserID 
 func (u *UserContributionFollow) GetListByUserID(uID int, order string, limit int, offset int) (userContributionFollow []UserContributionFollow, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserID": uID},

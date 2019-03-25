@@ -2,7 +2,7 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// UserCharacterImage ユーザーキャラクター画像
+// UserCharacterImage User character image
 type UserCharacterImage struct {
 	BaseModel
 	UserID      int `json:"user_id"`
@@ -11,7 +11,7 @@ type UserCharacterImage struct {
 	VoiceType   int `json:"voice_type"`
 }
 
-// Add 追加する
+// Add Add
 func (u *UserCharacterImage) Add() error {
 	return Create(u)
 }
@@ -21,7 +21,7 @@ func (u *UserCharacterImage) Save() error {
 	return Save(u)
 }
 
-// GetListByUserID ユーザーIDからListを取得する
+// GetListByUserID Get List from User ID
 func (u *UserCharacterImage) GetListByUserID(uID int) (userCharacterImage []UserCharacterImage, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserID": uID},
@@ -33,7 +33,7 @@ func (u *UserCharacterImage) GetListByUserID(uID int) (userCharacterImage []User
 	return
 }
 
-// GetByID IDから取得する
+// GetByID Get from ID
 func (u *UserCharacterImage) GetByID(id int) (userCharacterImage UserCharacterImage, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -45,7 +45,7 @@ func (u *UserCharacterImage) GetByID(id int) (userCharacterImage UserCharacterIm
 	return
 }
 
-// Delete Deleteする
+// Delete Delete
 func (u *UserCharacterImage) Delete() error {
 	return Delete(u)
 }

@@ -2,7 +2,7 @@ package controllers
 
 import "github.com/huydeerpets/tbs/utils/image"
 
-// SetImageFileResize リサイズするファイルを指定する
+// SetImageFileResize Specify the file to be resized
 func (c *BaseController) SetImageFileResize(f string, p string, w uint, h uint) (int, error) {
 	if isTest() {
 		return 0, nil
@@ -28,7 +28,7 @@ func (c *BaseController) SetImageFileResize(f string, p string, w uint, h uint) 
 	return 0, nil
 }
 
-// ToFile ファイルをSave
+// ToFile Save file
 func (c *BaseController) ToFile(path string) error {
 	if isTest() {
 		return nil

@@ -17,7 +17,7 @@ var contributionIDList []int
 var err error
 var logfile *os.File
 
-// RemoveDays Delete日数
+// RemoveDays 
 const RemoveDays = 3
 
 func init() {
@@ -40,7 +40,7 @@ func main() {
 	logs.Batch("finish", "removeContribution")
 }
 
-// RemoveSoundDetail 音声詳細をDeleteする
+// RemoveSoundDetail 
 func RemoveSoundDetail() error {
 	list, err := contributions.GetSoundDetailListByMakeStatusMade()
 	if err != nil {
@@ -60,7 +60,7 @@ func RemoveSoundDetail() error {
 	return nil
 }
 
-// RemoveJoinFile 連結ファイルをDeleteする
+// RemoveJoinFile 
 func RemoveJoinFile() error {
 	list, err := contributions.GetMovieListByMovieStatusPublic()
 	if err != nil {

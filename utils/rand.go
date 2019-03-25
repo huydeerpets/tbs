@@ -10,7 +10,7 @@ import (
 var testRandNum int
 var testRandString string
 
-// SetTestRandNum テストランダム数を設定する
+// SetTestRandNum 
 func SetTestRandNum(n int) {
 	if !IsTest() {
 		return
@@ -19,7 +19,7 @@ func SetTestRandNum(n int) {
 	testRandNum = n
 }
 
-// GetRandNum ランダム数を取得する
+// GetRandNum 
 func GetRandNum(n int) int {
 	if IsTest() {
 		return testRandNum
@@ -30,7 +30,7 @@ func GetRandNum(n int) int {
 	return rand.Intn(n)
 }
 
-// SetTestRandString テストランダム文字列を設定する
+// SetTestRandString 
 func SetTestRandString(s string) {
 	if !IsTest() {
 		return
@@ -39,7 +39,7 @@ func SetTestRandString(s string) {
 	testRandString = s
 }
 
-// GetRandString ランダムな文字列を取得する
+// GetRandString 
 func GetRandString(n int) string {
 	if IsTest() {
 		return testRandString

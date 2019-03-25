@@ -7,11 +7,11 @@ import (
 )
 
 const (
-	// MovieTypeYoutube 動画タイプ：Youtube
+	// MovieTypeYoutube 
 	MovieTypeYoutube = 1
 )
 
-// UserContributionMovie ユーザ投稿動画
+// UserContributionMovie 
 type UserContributionMovie struct {
 	BaseModel
 	UserContributionID int    `json:"user_contribution_id"`
@@ -20,7 +20,7 @@ type UserContributionMovie struct {
 	MovieStatus        int    `json:"movie_status"`
 }
 
-// Add 追加する
+// Add
 func (u *UserContributionMovie) Add() error {
 	return Create(u)
 }
@@ -30,7 +30,7 @@ func (u *UserContributionMovie) Save() error {
 	return Save(u)
 }
 
-// GetByUserContributionIDPostIDから取得する
+// GetByUserContributionID
 func (u *UserContributionMovie) GetByUserContributionID(uID int, t int) (userContributionMovie UserContributionMovie, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},
@@ -43,7 +43,7 @@ func (u *UserContributionMovie) GetByUserContributionID(uID int, t int) (userCon
 	return
 }
 
-// GetListByUserContributionIDListPostIDListからList取得する
+// GetListByUserContributionIDList
 func (u *UserContributionMovie) GetListByUserContributionIDList(uID []int, t int) (userContributionMovie []UserContributionMovie, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserContributionID": uID},
@@ -56,7 +56,7 @@ func (u *UserContributionMovie) GetListByUserContributionIDList(uID []int, t int
 	return
 }
 
-// GetListByMovieStatusPublic 公開中のList取得する
+// GetListByMovieStatusPublic 
 func (u *UserContributionMovie) GetListByMovieStatusPublic() (userContributionMovie []UserContributionMovie, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{}
 	option := make(map[string]interface{})

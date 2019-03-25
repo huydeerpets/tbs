@@ -22,7 +22,7 @@ type CallbackRequest struct {
 	Verifier string `form:"oauth_verifier"`
 }
 
-// Get Callbackする
+// Get Callback
 func (c *CallbackController) Get() {
 	c.StartSession()
 

@@ -6,13 +6,13 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// ViewStatusPublic 公開状態
+// ViewStatusPublic Public status
 const ViewStatusPublic = 1
 
-// ViewStatusPrivate プライベート状態
+// ViewStatusPrivate Private state
 const ViewStatusPrivate = 2
 
-// UserContribution ユーザ投稿
+// UserContribution UserContribution
 type UserContribution struct {
 	BaseModel
 	UserID     int    `json:"user_id"`
@@ -20,7 +20,7 @@ type UserContribution struct {
 	ViewStatus int    `json:"view_status"`
 }
 
-// GetIDAndAddPostしてIDを取得する
+// GetIDAndAddPost to get the ID
 func (u *UserContribution) GetIDAndAdd() (uint, error) {
 	if err := Create(u); err != nil {
 		return 0, err
@@ -34,12 +34,12 @@ func (u *UserContribution) Save() error {
 	return Save(u)
 }
 
-// Delete Deleteする
+// Delete Delete
 func (u *UserContribution) Delete() error {
 	return Delete(u)
 }
 
-// GetByIDPostIDから取得する
+// GetByID Get by Post ID
 func (u *UserContribution) GetByID(id int) (userContribution UserContribution, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"ID": id},
@@ -50,7 +50,7 @@ func (u *UserContribution) GetByID(id int) (userContribution UserContribution, d
 	return
 }
 
-// GetListByUserIDPostIDからList取得する
+// GetListByUserID
 func (u *UserContribution) GetListByUserID(userID int, order string, limit int, offset int) (userContribution []UserContribution, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"UserID": userID},
@@ -66,7 +66,7 @@ func (u *UserContribution) GetListByUserID(userID int, order string, limit int, 
 	return
 }
 
-// GetCountByUserIDPostIDから数を取得する
+// GetCountByUserID
 func (u *UserContribution) GetCountByUserID(userID int, order string) (int, error) {
 	userContribution := UserContribution{}
 
@@ -79,7 +79,7 @@ func (u *UserContribution) GetCountByUserID(userID int, order string) (int, erro
 	return GetCount(&userContribution, "user_contributions", "User_ID = :UserID AND Deleted_at IS NULL", whereList, option)
 }
 
-// GetByTop 新着から投稿List取得する
+// GetByTop Get Post List from New Arrivals
 func (u *UserContribution) GetByTop(o int, s int) (userContributionList []UserContribution, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{}
 
@@ -93,7 +93,7 @@ func (u *UserContribution) GetByTop(o int, s int) (userContributionList []UserCo
 	return
 }
 
-// GetListByIDList IDListから投稿Listを取得する
+// GetListByIDList Get Post List from IDList
 func (u *UserContribution) GetListByIDList(idList []int) (userContributionList []UserContribution, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{
 		{"IDList": idList},
@@ -104,7 +104,7 @@ func (u *UserContribution) GetListByIDList(idList []int) (userContributionList [
 	return
 }
 
-// GetListByViewStatusPublic IDListから投稿Listを取得する
+// GetListByViewStatusPublic Get Post List from IDList
 func (u *UserContribution) GetListByViewStatusPublic() (userContributionList []UserContribution, db *gorm.DB, err error) {
 	whereList := []map[string]interface{}{}
 

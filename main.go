@@ -21,7 +21,7 @@ func main() {
 	}
 
 	
-	err = beego.LoadAppConfig("ini", dir+"/conf/app_dev.conf")
+	err = beego.LoadAppConfig("ini", dir+"/conf/app_production.conf")
 	
 
 	beego.BConfig.WebConfig.StaticExtensionsToGzip = []string{".css", ".js"}

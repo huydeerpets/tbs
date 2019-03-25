@@ -8,149 +8,150 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// noUserID ユーザ無しID
+// noUserID NoUserID
 const noUserID = 0
 
-// BaseController ベースControler
+// BaseController BaseControler
 type BaseController struct {
 	beego.Controller
 }
 
-// ErrorResponse エラー発生response
+// ErrorResponse Errorresponse
 type ErrorResponse struct {
 	Message string `json:"message"`
 	ErrCode int    `json:"errCode"`
 }
 
-// Accessor ベースアクセサー
+// Accessor Base accessor
 type Accessor interface {
 	GetUserID() int
 	ServerError()
 }
 
 const (
-	// ErrCodeCommon 汎用エラー
+	// ErrCodeCommon Common error
 	ErrCodeCommon = 1
-	// ErrCodeUserNotFound ユーザ情報が取得できない or 不一致
+	// ErrCodeUserNotFound Unable to get user information or mismatch
 	ErrCodeUserNotFound = 2
-	// ErrCodeLoginNotFound ログインしていない
+	// ErrCodeLoginNotFound Not logged in
 	ErrCodeLoginNotFound = 3
-	// ErrCreateUser ユーザ登録に失敗
+	// ErrCreateUser User registration failed
 	ErrCreateUser = 4
-	// ErrParameter パラメータエラー
+	// ErrParameter Parameter error
 	ErrParameter = 5
-	// ErrImageConversionImage変換エラー
+	// ErrImageConversionImageConversion error
 	ErrImageConversion = 6
-	// ErrImageResizeImage縮小エラー
+	// ErrImageResizeImageShrink error
 	ErrImageResize = 7
-	// ErrContributionNewPost失敗
+	// ErrContributionNewPostError
 	ErrContributionNew = 8
-	// ErrContributionSavePost保存失敗
+	// ErrContributionSavePostStorage failure
 	ErrContributionSave = 9
-	// ErrContributionTagSavePostタグ保存失敗
+	// ErrContributionTagSavePostTag save failure
 	ErrContributionTagSave = 10
-	// ErrUserSave ユーザ保存失敗
+	// ErrUserSave User save failure
 	ErrUserSave = 11
-	// ErrUserOrPasswordDifferent ユーザかパスワードが異なる
+	// ErrUserOrPasswordDifferent User or password is different
 	ErrUserOrPasswordDifferent = 12
-	// ErrContributionSearch 検索取得に失敗
+	// ErrContributionSearch Failed to get search
 	ErrContributionSearch = 13
-	// ErrFollowedFollow済み
+	// ErrFollowedFollowAlready
 	ErrFollowed = 14
-	// ErrAddFollowFollow追加失敗
+	// ErrAddFollowFollow addition failure
 	ErrAddFollow = 15
-	// ErrContributionNotFoundPostが存在しない
+	// ErrContributionNotFoundPost does not exist
 	ErrContributionNotFound = 16
-	// ErrDeleteFollowFollowDelete失敗
+	// ErrDeleteFollowFollowDelete failure
 	ErrDeleteFollow = 17
-	// ErrTagMaxNumberOver タグの最大数を超えている
+	// The maximum number of ErrTagMaxNumberOver tags is exceeded
 	ErrTagMaxNumberOver = 18
-	// ErrTagNameOverlap 重複したタグ名が存在する
+	// ErrTagNameOverlap Duplicate tag name exists
 	ErrTagNameOverlap = 19
-	// ErrContributionNoUserPostしたユーザではない
+	// Not the user who did ErrContributionNoUserPost
 	ErrContributionNoUser = 20
-	// ErrPasswordMinLength パスワードが最低文字数以下
+	// ErrPasswordMinLength Password is less than the minimum number of characters
 	ErrPasswordMinLength = 21
 )
 
-// errResponseMap エラーresponseマップ
+// errResponseMap Error response map
 var errResponseMap = map[int]ErrorResponse{
 	ErrCodeCommon: {
-		Message: "エラーが発生しました。",
+		Message: "An error has occurred.",
 	},
 	ErrCodeUserNotFound: {
-		Message: "ユーザ情報が取得できませんでした。もう一度、ログインして下さい。",
+		Message: "User information could not be obtained. Please login again.",
 	},
 	ErrCodeLoginNotFound: {
-		Message: "この画面は、ログインしていないユーザーに使用できません",
+		Message: "This screen can not be used for users who are not logged in",
 	},
 	ErrCreateUser: {
-		Message: "ユーザ作成に失敗しました。もう一度登録お願い致します。",
+		Message: "Failed to create user. Please register again.",
 	},
 	ErrParameter: {
-		Message: "不正なパラメータが送信されました。",
+		Message: "Bad parameter has been sent",
 	},
 	ErrImageConversion: {
-		Message: "画像の変換に失敗しました。",
+		Message: "Image conversion failed",
 	},
 	ErrImageResize: {
-		Message: "画像のリサイズに失敗しました。",
+		Message: "Image resizing failed",
 	},
 	ErrContributionNew: {
-		Message: "投稿失敗しました。",
+		Message: "Post failed",
 	},
 	ErrContributionSave: {
-		Message: "保存に失敗しました。",
+		Message: "Failed to save",
 	},
 	ErrContributionTagSave: {
-		Message: "タグ保存に失敗しました。",
+		Message: "Failed to save tag",
 	},
 	ErrUserSave: {
-		Message: "ユーザ保存に失敗しました。",
+		Message: "Failed to save user",
 	},
 	ErrUserOrPasswordDifferent: {
-		Message: "メールアドレスとパスワードが一致しません。もう一度入力お願い致します。",
+		Message: "Email address and password do not match. Please enter again",
 	},
 	ErrContributionSearch: {
-		Message: "検索結果の取得に失敗した。",
+		Message: "Failed to get search results",
 	},
 	ErrFollowed: {
-		Message: "既にフォロー済みです。",
+		Message: "Already followed",
 	},
 	ErrAddFollow: {
-		Message: "フォローの登録に失敗しました。お手数ですが、もう一度追加お願い致します。",
+		Message: "Failed to register for following. Sorry to trouble you, but please add it again.",
 	},
 	ErrContributionNotFound: {
-		Message: "存在しない投稿データです。",
+		Message: "Post data that does not exist",
 	},
 	ErrDeleteFollow: {
-		Message: "フォローのDeleteに失敗しました。お手数ですが、もう一度操作お願い致します。",
+		Message: "Failed to delete follow. Please try again.",
 	},
 	ErrTagMaxNumberOver: {
-		Message: "Settingできるタグの数を超えました。追加する場合は、どれかDeleteしてください。",
+		Message: "The number of tags that can be set has been exceeded. If you want to add one, please delete it.",
 	},
 	ErrTagNameOverlap: {
-		Message: "既に同じタグが登録されています。",
+		Message: "The same tag is already registered",
 	},
 	ErrContributionNoUser: {
-		Message: "自身の投稿ではないので、その操作は行なえません。",
+		Message: "You can not do this because it is not your own post",
 	},
 	ErrPasswordMinLength: {
-		Message: "パスワードは8文字以上でSettingして下さい。",
+		Message: "Please set a password with at least 8 characters.",
 	},
 }
 
-// getErroResponse エラーresponseを取得する
-func getErroResponse(errCode int) ErrorResponse {
 
-	err := errResponseMap[errCode]
+// get ErroResponse get error response
+func getErroResponse (errCode int) ErrorResponse {
+
+	err: = errResponseMap [errCode]
 	err.ErrCode = errCode
 
 	return err
 }
 
-// IsNoLogin ログインしているか判定する
-func (c *BaseController) IsNoLogin(userID int) bool {
+// IsNoLogin Determine if you are logged in
+func (c * BaseController) IsNoLogin (userID int) bool {
 	if userID == noUserID {
 		return false
 	}
@@ -158,35 +159,35 @@ func (c *BaseController) IsNoLogin(userID int) bool {
 	return true
 }
 
-// ServerLoginNotFound ログイン無しで観覧できない
-func (c *BaseController) ServerLoginNotFound() {
-	c.ServerError(errors.New("login not found"), ErrCodeLoginNotFound, noUserID)
+// ServerLoginNotFound I can not view without login
+func (c * BaseController) ServerLoginNotFound () {
+	c.ServerError (errors.New ("login not found"), ErrCodeLoginNotFound, noUserID)
 }
 
-// ServerError サーバーエラーにする
-func (c *BaseController) ServerError(err error, errCode int, userID int) {
-	beego.Error("Error :", err.Error())
-	logs.Err(err.Error(), userID)
+// ServerError Make server error
+func (c * BaseController) ServerError (err error, errCode int, userID int) {
+	beego.Error ("Error:", err.Error ())
+	logs.Err (err.Error (), userID)
 
-	c.Ctx.ResponseWriter.WriteHeader(500)
-	c.Data["json"] = getErroResponse(errCode)
+	c.Ctx.ResponseWriter.WriteHeader (500)
+	c.Data ["json"] = get ErroResponse (errCode)
 
-	c.ServeJSON()
+	c.ServeJSON ()
 }
 
-// isTest テスト環境か判定する
-func isTest() bool {
-	if beego.AppConfig.String("runmode") == "test" {
+// isTest test environment
+func isTest () bool {
+	if beego.AppConfig.String ("runmode") == "test" {
 		return true
 	}
 
 	return false
 }
 
-// RedirectError エラーにリダレクトする
-func (c *BaseController) RedirectError(err error, userID int) {
+// RedirectError redirect error
+func (c * BaseController) RedirectError (err error, userID int) {
 
-	logs.Err(err.Error(), userID)
+	logs.Err (err.Error (), userID)
 
-	c.Redirect(beego.AppConfig.String("errorUrl"), 302)
+	c.Redirect (beego.AppConfig.String ("errorUrl"), 302)
 }

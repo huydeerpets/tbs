@@ -172,7 +172,7 @@ func (c *BaseController) ServerError(err error, errCode int, userID int) {
 	c.Ctx.ResponseWriter.WriteHeader(500)
 	c.Data["json"] = get ErroResponse(errCode)
 
-	c.ServeJSON ()
+	c.ServeJSON()
 }
 
 // isTest test environment

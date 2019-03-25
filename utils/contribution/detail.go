@@ -109,7 +109,7 @@ func GetDetailByUserContributionID(uID int) (models.UserContributionDetail, erro
 	return r, err
 }
 
-// GetBodyByUserContributionIDPostIDから本文を取得する
+// GetBodyByUserContributionID
 func GetBodyByUserContributionID(uID int) ([]GetBody, error) {
 	b := []GetBody{}
 	u, err := GetDetailByUserContributionID(uID)

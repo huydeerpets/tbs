@@ -216,7 +216,7 @@ func getContributionList(u []models.UserContribution) (contributionList []Contri
 	return contributionList, nil
 }
 
-// GetListByTop 新着を取得する
+// GetListByTop 
 func GetListByTop(offset int, size int) ([]Contribution, error) {
 	u := &models.UserContribution{}
 	userContribution, _, err := u.GetByTop(offset, size)
@@ -227,7 +227,7 @@ func GetListByTop(offset int, size int) ([]Contribution, error) {
 	return getContributionList(userContribution)
 }
 
-// GetListBySearchValue 検索値からListを取得する
+// GetListBySearchValue 
 func GetListBySearchValue(s []SearchValue) ([]Contribution, error) {
 	idList := []int{}
 	for _, v := range s {
@@ -275,7 +275,7 @@ func GetListBySearchValue(s []SearchValue) ([]Contribution, error) {
 	return r, nil
 }
 
-// GetListByFollowOrderValueFollow順からListを取得する
+// GetListByFollowOrderValue
 func GetListByFollowOrderValue(f []follows.OrderValue) ([]Contribution, error) {
 	idList := []int{}
 	for _, v := range f {
@@ -309,7 +309,7 @@ func GetListByFollowOrderValue(f []follows.OrderValue) ([]Contribution, error) {
 	return getContributionList(userContributionList)
 }
 
-// GetViewStatusPublicIDList 公開状態のIDListを取得する
+// GetViewStatusPublicIDList 
 func GetViewStatusPublicIDList() ([]int, error) {
 	r := []int{}
 
@@ -326,7 +326,7 @@ func GetViewStatusPublicIDList() ([]int, error) {
 	return r, nil
 }
 
-// ContributionListToPublicPostListから公開中を取得する(非公開状態は本文を空にする)
+// ContributionListToPublic
 func ContributionListToPublic(list []Contribution) []Contribution {
 	r := []Contribution{}
 
@@ -337,7 +337,7 @@ func ContributionListToPublic(list []Contribution) []Contribution {
 	return r
 }
 
-// ContributionToPublicPostから公開中を取得する(非公開状態は本文を空にする)
+// ContributionToPublic
 func ContributionToPublic(c Contribution) Contribution {
 	if c.ViewStatus != models.ViewStatusPublic {
 		c.Body = []GetBody{}

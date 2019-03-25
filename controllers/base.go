@@ -166,11 +166,11 @@ func (c *BaseController) ServerLoginNotFound() {
 
 // ServerError Make server error
 func (c *BaseController) ServerError(err error, errCode int, userID int) {
-	beego.Error("Error:", err.Error())
+	beego.Error("Error :", err.Error())
 	logs.Err(err.Error(), userID)
 
 	c.Ctx.ResponseWriter.WriteHeader(500)
-	c.Data["json"] = get ErroResponse(errCode)
+	c.Data["json"] = getErroResponse(errCode)
 
 	c.ServeJSON()
 }

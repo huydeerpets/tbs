@@ -67,7 +67,7 @@ type ForgetpasswordTemplate struct {
 
 // GetForgetpasswordBody 
 func GetForgetpasswordBody(f ForgetpasswordTemplate) []byte {
-	t: = "Request for password change accepted. \r\n" +
+	t := "Request for password change accepted. \r\n" +
 "\r\n" +
 "Please change your password from the following URL \r\n" +
 "{{.URL}} \r\n" +

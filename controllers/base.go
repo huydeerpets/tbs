@@ -142,16 +142,16 @@ var errResponseMap = map[int]ErrorResponse{
 
 
 // get ErroResponse get error response
-func getErroResponse (errCode int) ErrorResponse {
+func getErroResponse(errCode int) ErrorResponse {
 
-	err: = errResponseMap [errCode]
+	err := errResponseMap[errCode]
 	err.ErrCode = errCode
 
 	return err
 }
 
 // IsNoLogin Determine if you are logged in
-func (c * BaseController) IsNoLogin (userID int) bool {
+func (c *BaseController) IsNoLogin(userID int) bool {
 	if userID == noUserID {
 		return false
 	}
@@ -160,24 +160,24 @@ func (c * BaseController) IsNoLogin (userID int) bool {
 }
 
 // ServerLoginNotFound I can not view without login
-func (c * BaseController) ServerLoginNotFound () {
-	c.ServerError (errors.New ("login not found"), ErrCodeLoginNotFound, noUserID)
+func (c *BaseController) ServerLoginNotFound() {
+	c.ServerError (errors.New("login not found"), ErrCodeLoginNotFound, noUserID)
 }
 
 // ServerError Make server error
-func (c * BaseController) ServerError (err error, errCode int, userID int) {
-	beego.Error ("Error:", err.Error ())
-	logs.Err (err.Error (), userID)
+func (c *BaseController) ServerError(err error, errCode int, userID int) {
+	beego.Error("Error:", err.Error())
+	logs.Err(err.Error(), userID)
 
-	c.Ctx.ResponseWriter.WriteHeader (500)
-	c.Data ["json"] = get ErroResponse (errCode)
+	c.Ctx.ResponseWriter.WriteHeader(500)
+	c.Data["json"] = get ErroResponse(errCode)
 
 	c.ServeJSON ()
 }
 
 // isTest test environment
-func isTest () bool {
-	if beego.AppConfig.String ("runmode") == "test" {
+func isTest() bool {
+	if beego.AppConfig.String("runmode") == "test" {
 		return true
 	}
 
@@ -185,9 +185,9 @@ func isTest () bool {
 }
 
 // RedirectError redirect error
-func (c * BaseController) RedirectError (err error, userID int) {
+func (c *BaseController) RedirectError(err error, userID int) {
 
-	logs.Err (err.Error (), userID)
+	logs.Err(err.Error(), userID)
 
-	c.Redirect (beego.AppConfig.String ("errorUrl"), 302)
+	c.Redirect(beego.AppConfig.String("errorUrl"), 302)
 }

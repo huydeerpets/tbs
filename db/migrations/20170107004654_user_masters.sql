@@ -4,11 +4,11 @@
 CREATE TABLE IF NOT EXISTS `user_masters` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL COMMENT 'UserName',
-    `email` VARCHAR(100) NOT NULL COMMENT 'メールアドレス',
-    `password` text NOT NULL COMMENT 'パスワード',
-    `created_at` DATETIME NULL COMMENT '作成日時',
-    `updated_at` DATETIME NULL COMMENT '更新日時',
-    `deleted_at` DATETIME NULL COMMENT 'Delete日時',
+    `email` VARCHAR(100) NOT NULL COMMENT 'Email',
+    `password` text NOT NULL COMMENT 'Password',
+    `created_at` DATETIME NULL COMMENT 'Created At',
+    `updated_at` DATETIME NULL COMMENT 'Updated At',
+    `deleted_at` DATETIME NULL COMMENT 'Deleted At',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 

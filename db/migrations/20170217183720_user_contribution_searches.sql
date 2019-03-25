@@ -3,10 +3,10 @@
 -- SQL in section 'Up' is executed when this migration is applied
 CREATE TABLE IF NOT EXISTS `user_contribution_searches` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `user_contribution_id` BIGINT NOT NULL COMMENT 'ユーザ投稿ID',
-    `search` TEXT COMMENT '検索',
-    `created_at` DATETIME NULL COMMENT '作成日時',
-    `updated_at` DATETIME NULL COMMENT '更新日時',
+    `user_contribution_id` BIGINT NOT NULL COMMENT 'UserContributionID',
+    `search` TEXT COMMENT 'Search',
+    `created_at` DATETIME NULL COMMENT 'Created At',
+    `updated_at` DATETIME NULL COMMENT 'Updated At',
     PRIMARY KEY (`id`)
 ) ENGINE = mroonga;
 

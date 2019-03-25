@@ -3,11 +3,11 @@
 -- SQL in section 'Up' is executed when this migration is applied
 CREATE TABLE IF NOT EXISTS `contribution_total_follows` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `user_contribution_id` BIGINT NOT NULL COMMENT 'ユーザ投稿ID',
-    `count` BIGINT NOT NULL COMMENT 'フォロー数',
-    `created_at` DATETIME NULL COMMENT '作成日時',
-    `updated_at` DATETIME NULL COMMENT '更新日時',
-    `deleted_at` DATETIME NULL COMMENT 'Delete日時',
+    `user_contribution_id` BIGINT NOT NULL COMMENT 'UserContributionID',
+    `count` BIGINT NOT NULL COMMENT 'Number of Followers',
+    `created_at` DATETIME NULL COMMENT 'Created At',
+    `updated_at` DATETIME NULL COMMENT 'Updated At',
+    `deleted_at` DATETIME NULL COMMENT 'Deleted At',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
